@@ -1,0 +1,43 @@
+import type { Messages } from "@/lib/i18n";
+import { jobMessages } from "./jobs";
+import { mediaMessages } from "./media";
+import { workspaceStateMessages } from "./workspace-state";
+
+export const commonMessages: Messages = {
+  ...jobMessages,
+  ...mediaMessages,
+  ...workspaceStateMessages,
+  "Открыть проверку": { kk: "Тексеруді ашу", en: "Open check" },
+  "Открыть сервис": { kk: "Сервисті ашу", en: "Open service" },
+  "Гостевой доступ": { kk: "Қонақ ретінде кіру", en: "Guest access" },
+  "Демонстрационный просмотр": { kk: "Демонстрациялық қарау", en: "Demo preview" },
+  "Откройте демонстрационный пример или подключите сервер для проверки своей записи.": { kk: "Демонстрациялық мысалды ашыңыз немесе жазбаңызды тексеру үшін серверді қосыңыз.", en: "Open a demo example or connect a server to analyze your recording." },
+  "Обнаружены признаки возможных нарушений": { kk: "Ықтимал бұзушылық белгілері анықталды", en: "Possible signs of violations detected" },
+  "Нарушение не обнаружено": { kk: "Бұзушылық анықталмады", en: "No violation detected" },
+  "Результат является подсказкой для проверки человеком, а не окончательным юридическим или дисциплинарным заключением.": { kk: "Нәтиже адамның тексеруіне арналған көмекші ақпарат болып табылады және түпкілікті құқықтық немесе тәртіптік қорытынды емес.", en: "The result supports human review and is not a final legal or disciplinary conclusion." },
+  "Язык интерфейса": { kk: "Интерфейс тілі", en: "Interface language" },
+  "Тема оформления": { kk: "Безендіру тақырыбы", en: "Appearance" },
+  "Тема оформления: {theme}": { kk: "Безендіру тақырыбы: {theme}", en: "Appearance: {theme}" },
+  "Системная тема": { kk: "Жүйе тақырыбы", en: "System theme" },
+  "Светлая тема": { kk: "Ашық тақырып", en: "Light theme" },
+  "Тёмная тема": { kk: "Қараңғы тақырып", en: "Dark theme" },
+  "Системная": { kk: "Жүйелік", en: "System" },
+  "Светлая": { kk: "Ашық", en: "Light" },
+  "Тёмная": { kk: "Қараңғы", en: "Dark" },
+  "Оформление": { kk: "Безендіру", en: "Appearance" },
+  "Язык": { kk: "Тіл", en: "Language" },
+  "Закрыть": { kk: "Жабу", en: "Close" },
+  "Отмена": { kk: "Бас тарту", en: "Cancel" },
+  "Сохранить": { kk: "Сақтау", en: "Save" },
+  "Назад": { kk: "Артқа", en: "Back" },
+  "Продолжить": { kk: "Жалғастыру", en: "Continue" },
+  "Загрузка…": { kk: "Жүктелуде…", en: "Loading…" },
+  "Готово": { kk: "Дайын", en: "Done" },
+  "Войти": { kk: "Кіру", en: "Sign in" },
+  "Попробовать": { kk: "Қолданып көру", en: "Try it" },
+  "Главная": { kk: "Басты бет", en: "Home" },
+  "На главную": { kk: "Басты бетке", en: "Go home" },
+  "Помощь": { kk: "Көмек", en: "Help" },
+  "Политика конфиденциальности": { kk: "Құпиялық саясаты", en: "Privacy policy" },
+  "Демо-режим": { kk: "Демо режимі", en: "Demo mode" },
+};

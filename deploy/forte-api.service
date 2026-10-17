@@ -1,0 +1,15 @@
+[Unit]
+Description=Forte video audit HTTP API
+After=network-online.target
+[Service]
+User=shadeform
+WorkingDirectory=/home/shadeform/forte-service
+EnvironmentFile=/home/shadeform/forte-service/secrets/service.env
+ExecStart=/home/shadeform/forte-service/.venv/bin/uvicorn backend.api:app --host 127.0.0.1 --port 8000 --workers 1 --no-access-log
+Restart=always
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+UMask=0077
+[Install]
+WantedBy=multi-user.target

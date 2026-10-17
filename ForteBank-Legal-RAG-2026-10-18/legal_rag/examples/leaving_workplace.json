@@ -1,0 +1,15 @@
+{
+  "schema": "legal_rag.input.v1",
+  "bundle_id": "synthetic-leaving-001",
+  "context": {"organization_type": "bank", "operation": "обслуживание клиента", "event_date": null},
+  "actors": [{"actor_id": "worker1", "role": "cashier", "role_status": "confirmed", "fact_ids": ["f1"]}],
+  "facts": [
+    {"fact_id": "f1", "predicate": "left_workplace", "statement": "Кассир покинул рабочее место",
+     "status": "confirmed", "actor_id": "worker1", "operation_id": "service1", "t_start": 20, "t_end": 25,
+     "anchor_sec": 21.4, "evidence_refs": ["example:frame:21.4"]},
+    {"fact_id": "f2", "predicate": "service_in_progress", "statement": "Обслуживание клиента продолжается",
+     "status": "confirmed", "actor_id": "worker1", "operation_id": "service1", "t_start": 15, "t_end": 30,
+     "evidence_refs": ["example:interval:15-30"]}
+  ],
+  "provenance": {"kind": "synthetic_fixture", "not_video_ground_truth": true}
+}

@@ -1,0 +1,10 @@
+# Installed automatically by install.py after the selected PyTorch build.
+numpy==2.2.6
+scipy==1.15.3
+scikit-learn==1.7.2
+joblib==1.6.0
+threadpoolctl==3.7.0
+opencv-python-headless==4.13.0.92
+timm==1.0.24
+einops==0.8.2
+av==16.0.1

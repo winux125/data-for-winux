@@ -1,0 +1,16 @@
+{
+  "created_utc": "2026-10-17T22:24:54.126306+00:00",
+  "local_sha256": {
+    "backend/api.py": "818bf427157292f23d07d9829bd9e199dc9f9e202d56fd31d5109d1c57be7b6b",
+    "backend/browser.py": "e4de4c258cb5eded23a83a8a7299bbb6348b967b38facbdb919cfef440f481f8",
+    "backend/store.py": "38028729693db1ce18b8567b75c07aca2d7187f357c0a7d3001bd91592a0a027",
+    "backend/worker.py": "140222e5aac81a904d1b544dd6da26501bd1fc1ed9b560690a2d84ef5f55f0f6",
+    "backend/pipeline.py": "6e4a0151269489152a71062e4dbe07fc395b7ed5529131182d1e89b4e47d5616",
+    "backend/vision.py": "d96e198d8edda0a0150a11540ddf3af228ca6a6946640c2d662961855923e841",
+    "forte-vision/hooks/use-api-connection.ts": "1664977326be7b82a8dc17e2a053de3dad9f0ebe51ba4e6b54c8fbea887e1ce6",
+    "forte-vision/components/forte-workspace.tsx": "ccda3b996386b079e478bf77e21d3af4544e292e6b9169c2d3b8679ad4d2f8e9",
+    "deploy/Caddyfile": "96ed3fce6ae3e7d884df200e6649db3c731ad78db0e27ce392b14c87dcd8e2a1",
+    "deploy/vercel/vercel.json": "ebf458d7dc9aabb77624a4a7a4e758be7c6bf0e7d83ea27b6c1e4564a0b795ad"
+  },
+  "remote_pipeline_sha256": "de2faa39711622b499e3098506e3ab0fb8dcf6f44fac4438d0f312637a1d5b23"
+}

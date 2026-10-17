@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "status": "ok",
+  "model": "JEPA-FULL",
+  "label": 0,
+  "label_name": "без нарушения",
+  "violation_detected": false,
+  "score": 0.26896308670511904,
+  "score_type": "uncalibrated_blend_score",
+  "threshold": 0.5,
+  "timecode_sec": null,
+  "timecode": null,
+  "events": [],
+  "timestamp_status": "not_applicable",
+  "video": "/home/ubuntu/forte-vlm/open/videos/Х-8.mov",
+  "duration_sec": 38.033021,
+  "latency_sec": 8.340826285999356,
+  "device": "cuda",
+  "encoder_precision": "bfloat16",
+  "cpu_threads": 4,
+  "model_manifest_sha256": "4a9daa4b34d2a97d798c33535192c8b20727c8ce2aa3985c6f3b22bf0a155245"
+}

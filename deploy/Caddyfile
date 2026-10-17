@@ -1,0 +1,13 @@
+154.54.100.194.sslip.io {
+    request_body {
+        max_size 11GB
+    }
+    @backend path /api/v1/* /api/browser/* /healthz /readyz /docs /docs/* /openapi.json /redoc
+    handle @backend {
+        reverse_proxy 127.0.0.1:8000
+    }
+    handle {
+        reverse_proxy 127.0.0.1:3000
+    }
+    header Strict-Transport-Security "max-age=86400"
+}

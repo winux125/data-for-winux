@@ -1,0 +1,15 @@
+.fv-cookie-notice{position:fixed;bottom:22px;left:22px;z-index:85;display:grid;grid-template-columns:38px minmax(0,1fr);column-gap:13px;width:420px;max-width:calc(100vw - 44px);padding:22px;border:1px solid var(--theme-border,#e8e0e5);border-radius:16px;background:var(--theme-surface,#fff);color:var(--theme-text,#302731);box-shadow:0 14px 60px #4a02211f;animation:fv-cookie-in .25s ease-out}
+.fv-cookie-symbol{display:grid;place-items:center;width:38px;height:38px;color:var(--theme-accent,#a31551);background:var(--theme-elevated,#f8edf3);border:1px solid var(--theme-border,#eadce3);border-radius:10px}
+.fv-cookie-close{position:absolute;right:9px;top:9px;display:grid;place-items:center;width:32px;height:32px;color:var(--theme-muted,#806e7c);border-radius:7px}
+.fv-cookie-close:hover{background:var(--theme-elevated,#f7f0f4)}
+.fv-cookie-copy h2{font-size:15px;line-height:1.5;font-weight:600;margin:0 16px 8px 0;color:var(--theme-text,#302731)}
+.fv-cookie-copy p{margin:0;font-size:12px;line-height:1.85;color:var(--theme-muted,#806e7c)}
+.fv-cookie-actions{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:19px;padding-top:16px;border-top:1px solid var(--theme-border,#e8e0e5)}
+.fv-cookie-actions a{display:inline-flex;align-items:center;min-height:40px;font-size:12px;text-underline-offset:4px;color:var(--theme-muted,#806e7c)}
+.fv-cookie-actions a:hover{text-decoration:underline;color:var(--theme-accent,#a31551)}
+.fv-cookie-actions button{min-height:40px;padding:9px 18px;border-radius:8px;color:var(--theme-accent-foreground,#fff);background:var(--theme-accent,#a31551);font-size:12px;font-weight:600}
+.fv-cookie-notice :focus-visible{outline:2px solid var(--theme-accent,#a31551);outline-offset:3px}
+@keyframes fv-cookie-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:479px){.fv-cookie-notice{left:14px;bottom:14px;max-width:calc(100vw - 28px);padding:20px;column-gap:11px}.fv-cookie-actions{gap:10px}.fv-cookie-actions a{font-size:11px}}
+@media(pointer:coarse){.fv-cookie-close{width:44px;height:44px;top:2px;right:2px}.fv-cookie-copy h2{margin-right:25px}.fv-cookie-actions a,.fv-cookie-actions button{min-height:44px}}
+@media(prefers-reduced-motion:reduce){.fv-cookie-notice{animation:none}}

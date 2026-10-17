@@ -1,0 +1,21 @@
+[Unit]
+Description=Forte local GPU inference worker
+After=network-online.target
+[Service]
+User=shadeform
+WorkingDirectory=/home/shadeform/forte-service
+EnvironmentFile=/home/shadeform/forte-service/secrets/service.env
+Environment=HF_HUB_OFFLINE=1
+Environment=HF_HOME=/ephemeral/forte-service-models/hf-cache
+Environment=TRANSFORMERS_OFFLINE=1
+Environment=TOKENIZERS_PARALLELISM=false
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/home/shadeform/forte-service/.venv/bin/python -m backend.worker
+Restart=always
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateNetwork=true
+UMask=0077
+[Install]
+WantedBy=multi-user.target

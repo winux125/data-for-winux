@@ -1,0 +1,85 @@
+{
+  "jurisdiction": "KZ",
+  "rules": [
+    {
+      "id": "R231-12",
+      "type": "Хранение личных вещей работника в кассовом узле",
+      "clauses": [
+        "V1900019680:12"
+      ],
+      "human_reviewed": false,
+      "production_active": false,
+      "review_status": "draft_requires_human_review"
+    },
+    {
+      "id": "R231-20A",
+      "type": "Приём и пересчёт наличных денег не в присутствии клиента",
+      "clauses": [
+        "V1900019680:20"
+      ],
+      "human_reviewed": false,
+      "production_active": false,
+      "review_status": "draft_requires_human_review"
+    },
+    {
+      "id": "R231-20B",
+      "type": "Ранее принятые наличные деньги не убраны в закрывающееся устройство",
+      "clauses": [
+        "V1900019680:20"
+      ],
+      "human_reviewed": false,
+      "production_active": false,
+      "review_status": "draft_requires_human_review"
+    },
+    {
+      "id": "R231-22",
+      "type": "Уход кассового работника с рабочего места до окончания обслуживания клиента",
+      "clauses": [
+        "V1900019680:22"
+      ],
+      "human_reviewed": false,
+      "production_active": false,
+      "review_status": "draft_requires_human_review"
+    },
+    {
+      "id": "R231-25",
+      "type": "Вскрытие повреждённой инкассаторской сумки без работника инкассации",
+      "clauses": [
+        "V1900019680:25"
+      ],
+      "human_reviewed": false,
+      "production_active": false,
+      "review_status": "draft_requires_human_review"
+    },
+    {
+      "id": "R231-31.4",
+      "type": "Выдача наличных денег клиенту без пересчёта в его присутствии",
+      "clauses": [
+        "V1900019680:31"
+      ],
+      "human_reviewed": false,
+      "production_active": false,
+      "review_status": "draft_requires_human_review"
+    },
+    {
+      "id": "R231-32",
+      "type": "Выдача банкнот из неполных или повреждённых корешков без полистного пересчёта",
+      "clauses": [
+        "V1900019680:32"
+      ],
+      "human_reviewed": false,
+      "production_active": false,
+      "review_status": "draft_requires_human_review"
+    },
+    {
+      "id": "R231-42",
+      "type": "Пересчёт, сортировка или упаковка наличных денег без контролирующего работника",
+      "clauses": [
+        "V1900019680:42"
+      ],
+      "human_reviewed": false,
+      "production_active": false,
+      "review_status": "draft_requires_human_review"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.webp binary
+*.woff2 binary
+*.mov binary
+# Preserve supplied model-package sources byte-for-byte.
+JEPA-FULL/** -text
+ForteBank-Legal-RAG-2026-10-18/** -text

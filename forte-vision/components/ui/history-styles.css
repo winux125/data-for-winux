@@ -1,0 +1,10 @@
+/* HeroUI: only the four primitives used by the history table, with one Tailwind entry. */
+@import "@heroui/styles/themes/shared/theme.css";
+@import "@heroui/styles/themes/default/variables.css" layer(theme);
+@import "@heroui/styles/utilities";
+@import "@heroui/styles/variants";
+@import "@heroui/styles/components/table.css" layer(components);
+@import "@heroui/styles/components/button.css" layer(components);
+@import "@heroui/styles/components/checkbox.css" layer(components);
+@import "@heroui/styles/components/chip.css" layer(components);
+@reference "../../app/globals.css";

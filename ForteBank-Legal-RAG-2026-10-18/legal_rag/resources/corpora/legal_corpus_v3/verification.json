@@ -1,0 +1,27 @@
+{
+  "library_id": "kz-banking-open-sources-2026-10-17-v3",
+  "sources": 54,
+  "chunks": 2475,
+  "roles": {
+    "guidance": 5,
+    "background": 13,
+    "operational": 19,
+    "reference_only": 4,
+    "historical_reference": 4,
+    "amendment": 9
+  },
+  "source_hashes_verified": true,
+  "manifest_sha256": "6d298f129abf38795a146fa48687d5f8f8dbae6ea6db211ce0e7dc66b4ed4c25",
+  "network_required": false,
+  "legal_verdict_enabled": false,
+  "tests_passed": 42,
+  "new_since_previous": 29,
+  "previous_version_preserved": true,
+  "previous_manifest_sha256": "fac8d6598b6a0d2a427e3dc9e1659d90f1d9952e50c2cf5b487d5970c5d04603",
+  "shared_source_hashes_match": true,
+  "duplicate_full_texts": [],
+  "text_characters": 5848508,
+  "default_documents": 32,
+  "blind_quality_evaluation": false,
+  "smoke_elapsed_seconds": 22.7809999999954
+}

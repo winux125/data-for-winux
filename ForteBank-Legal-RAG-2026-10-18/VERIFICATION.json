@@ -1,0 +1,26 @@
+{
+  "created_utc": "2026-10-17T19:49:36.299467+00:00",
+  "python": "3.12.14",
+  "standalone_tests": 104,
+  "test_seconds": 13.311,
+  "tests_pass": true,
+  "no_experiments_folder_in_delivery": true,
+  "resources_inside_package": true,
+  "smoke_outside_working_directory": {
+    "rule_id": "R231-22",
+    "decision": "violation_supported",
+    "generator": "template_fallback",
+    "publication_allowed": false,
+    "source_hashes_verified": true
+  },
+  "corpus_sources": {
+    "legal_corpus_v2": 25,
+    "legal_corpus_v3": 54
+  },
+  "core_sources": 5,
+  "retrieval_identical_to_reference": true,
+  "synthetic_template_cases_passed": 4,
+  "real_neural_models_tested": false,
+  "weights_included": false,
+  "dense_index_included": false
+}

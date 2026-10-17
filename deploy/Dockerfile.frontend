@@ -1,0 +1,7 @@
+# Reuse the pinned production runtime and dependencies; rebuild the supplied UI.
+FROM forte-vision:deployment
+USER root
+COPY . /app/
+RUN node node_modules/vinext/dist/cli.js build
+USER node
+CMD ["node", "node_modules/vinext/dist/cli.js", "start", "--hostname", "0.0.0.0", "--port", "3000"]

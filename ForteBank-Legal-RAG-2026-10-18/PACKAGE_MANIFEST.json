@@ -1,0 +1,1205 @@
+{
+  "package": "ForteBank-Legal-RAG-2026-10-18",
+  "files": [
+    {
+      "path": "configs/cpu_smoke.json",
+      "bytes": 942,
+      "sha256": "825416cc408dba69cf1151d106a819d2c8b7cf2dbb566d12b111e1aaedeb4d71"
+    },
+    {
+      "path": "configs/cuda.json",
+      "bytes": 951,
+      "sha256": "f9794749dcb90656eeb4e1f4732787269b47b5377037a1655e7ee3858d37eb4c"
+    },
+    {
+      "path": "DEV_BENCHMARK.json",
+      "bytes": 290497,
+      "sha256": "e656d4ffa9ab157e2770fa1579535830c1ae72b2da0520f9ccc30ed05022b974"
+    },
+    {
+      "path": "INTEGRATION.md",
+      "bytes": 8076,
+      "sha256": "92cfb6c607d27b0280f86c067a0cf3f69bef0ec8c18bd04db95af181511108f6"
+    },
+    {
+      "path": "legal_rag/__init__.py",
+      "bytes": 407,
+      "sha256": "2951ae6d339a373db6c60aa49f6d94f1b5000b3a79b9fa87fc27149716b8a5e0"
+    },
+    {
+      "path": "legal_rag/__main__.py",
+      "bytes": 9147,
+      "sha256": "963313add29f292fe30af6018db12510787cca479d3daebc24bac8aa8a8218d9"
+    },
+    {
+      "path": "legal_rag/api.py",
+      "bytes": 6212,
+      "sha256": "491c52a89bdb2d1425709efefdf277a18c60c4234785f4294cd4085fed9cadc1"
+    },
+    {
+      "path": "legal_rag/apply.py",
+      "bytes": 20035,
+      "sha256": "526c930bfd90d23f8f116addd48f9d944edb27a3c2d324357d5dd7b5e66538b0"
+    },
+    {
+      "path": "legal_rag/bench.py",
+      "bytes": 6518,
+      "sha256": "fe8871d31726ca2eae15bda7a7b37950822c71a7a8c8c4ea5c9a4b5d0ef401a4"
+    },
+    {
+      "path": "legal_rag/bm25.py",
+      "bytes": 6638,
+      "sha256": "5644a5cadca1f904e853f60f8f6d72d1eab627691958841b0e9a56c8edc8219b"
+    },
+    {
+      "path": "legal_rag/brief.py",
+      "bytes": 9363,
+      "sha256": "3365c60a28ba3c978df5b0de2f64743ab9d215a810fd0c14215a34d4a192fec5"
+    },
+    {
+      "path": "legal_rag/cards.py",
+      "bytes": 7358,
+      "sha256": "db5b595ceb3a6968e978f8cf2f04e7ce9de1a95850a7c01a8826eebbcab645ce"
+    },
+    {
+      "path": "legal_rag/collect_sources.py",
+      "bytes": 11954,
+      "sha256": "9a7b069c7c05e107e3329c5b2630591d0f6c96c5c1817a99fa4e75f0b2a7c44c"
+    },
+    {
+      "path": "legal_rag/config.py",
+      "bytes": 5640,
+      "sha256": "6873f2e105fab641c9ce1927c4ad585c46e8ded1ac730798a633bc6274f72971"
+    },
+    {
+      "path": "legal_rag/contracts.py",
+      "bytes": 20338,
+      "sha256": "3ceaae5c854c202439ee91f8f3caa52fee314424c5f72b033b912bf881c003c8"
+    },
+    {
+      "path": "legal_rag/corpus.py",
+      "bytes": 12894,
+      "sha256": "563b372ad1f460b574668c991054e695756e702b080cabe9c1377f44cbf96e39"
+    },
+    {
+      "path": "legal_rag/data/eval_queries.json",
+      "bytes": 7725,
+      "sha256": "0856ba0e4829a1e9c4f92028e1842bb08755d3c43693a1c9e10585d3950dad80"
+    },
+    {
+      "path": "legal_rag/data/lexicon.json",
+      "bytes": 10971,
+      "sha256": "29d691533c3e6df65cb5f6d3b8d9e16d83fc5664c06ca696618594f0eb864f49"
+    },
+    {
+      "path": "legal_rag/data/rule_cards.json",
+      "bytes": 24956,
+      "sha256": "fc3813b4d8d671c820691789dd66b5b4f7fbd3587a483222941a72e5d8c1cf84"
+    },
+    {
+      "path": "legal_rag/data/runtime_config.json",
+      "bytes": 894,
+      "sha256": "a26598e65383f6d46d4f5ef50bd303f16f3ceb230604af411b788a8f8ea4c8a6"
+    },
+    {
+      "path": "legal_rag/data/source_catalog_v2.json",
+      "bytes": 7601,
+      "sha256": "262dd8d1fef49f5d9c831d496334038af80f35251a471d064fa4e355b9aeb68c"
+    },
+    {
+      "path": "legal_rag/data/source_catalog_v3.json",
+      "bytes": 19543,
+      "sha256": "81b5e185d05e31069595bd85d7cde26dabdf099a8958185ac44d21602b6e99ce"
+    },
+    {
+      "path": "legal_rag/decide.py",
+      "bytes": 4200,
+      "sha256": "1aff09042ecb869a91d0a87af5d8049fd679bb257058d6fdc4b858b1fc9e2e13"
+    },
+    {
+      "path": "legal_rag/dense.py",
+      "bytes": 2695,
+      "sha256": "ef2270fd534e180f7c7e3778b2f6379b14ad7f2ffb7780862dc021954b1d3b4d"
+    },
+    {
+      "path": "legal_rag/describe.py",
+      "bytes": 3840,
+      "sha256": "8728c650dd5237dbebbb9a0357c0db2944057677af28b1f2ae83b35a125f1b71"
+    },
+    {
+      "path": "legal_rag/embed.py",
+      "bytes": 12181,
+      "sha256": "4726dac8f42b543be8500dfb6900b83aae7d79528436e357b3dc7f7ea4f27905"
+    },
+    {
+      "path": "legal_rag/examples/leaving_workplace.json",
+      "bytes": 993,
+      "sha256": "14ab6afe30f2e5b6c6d4ef023d462bc3c409182c3c9e15b6b5cbeb220a02a697"
+    },
+    {
+      "path": "legal_rag/generate.py",
+      "bytes": 5971,
+      "sha256": "df34e67e1d6dbdb2bf9b5c2c069efd60c906ae780ef799ccea89718538d6aa5b"
+    },
+    {
+      "path": "legal_rag/library.py",
+      "bytes": 10541,
+      "sha256": "577cd448b6909fc2d20dc20fda04ea13e8a696df256351a359848708cd943768"
+    },
+    {
+      "path": "legal_rag/packer.py",
+      "bytes": 9706,
+      "sha256": "14662cfd9e299e15ed3690054c396b29613f4a9065b47ed1c7756908e47df392"
+    },
+    {
+      "path": "legal_rag/paths.py",
+      "bytes": 517,
+      "sha256": "c4b30bcecd7b57652cee2a91196718ae9524a0202fa5f1ae9bfc5efb4f40d6e6"
+    },
+    {
+      "path": "legal_rag/pipeline.py",
+      "bytes": 18995,
+      "sha256": "721179681cbdfaa3ce0a0c4e881576d4d83113be8b205bd01a2ea6240f5d915f"
+    },
+    {
+      "path": "legal_rag/prompts.py",
+      "bytes": 10332,
+      "sha256": "d015cda2e9dc1846dbbe14fcede79e1cc014c81cd19559189a829d5fb85d9fe6"
+    },
+    {
+      "path": "legal_rag/README.md",
+      "bytes": 8835,
+      "sha256": "fe5003eee54d233adf0b7e5be8c0703a711364308458816aa04e28d8c67016a9"
+    },
+    {
+      "path": "legal_rag/refs.py",
+      "bytes": 8489,
+      "sha256": "348ba8b0e37202842123d48cb3d647ef37a5017cfb8042a356c8e59814d78e9c"
+    },
+    {
+      "path": "legal_rag/requirements-gpu.txt",
+      "bytes": 292,
+      "sha256": "7e4894989621700364f69fd6848b4fe45b568878d739b2c9264dbb8b3c69506c"
+    },
+    {
+      "path": "legal_rag/resources/core/section_briefs.json",
+      "bytes": 49865,
+      "sha256": "9186e077815acdc08216f8a012ff01d85b8b22990d19fc50d6e8914b0f0afb62"
+    },
+    {
+      "path": "legal_rag/resources/core/sources/V1200007926.json",
+      "bytes": 19418,
+      "sha256": "3e3fa16946e50c51d174daf5d2741c13d2094a71f88c531210a98bb85fd540aa"
+    },
+    {
+      "path": "legal_rag/resources/core/sources/V1200007926.txt",
+      "bytes": 12464,
+      "sha256": "31dd8fbec8093791f3ebac4da237fb1d43377024f9ebcfd879a6d10591c99270"
+    },
+    {
+      "path": "legal_rag/resources/core/sources/V1700016120.json",
+      "bytes": 129219,
+      "sha256": "d67bff42f7101f5c41be9c915d27526ea999186b51ebb914ffd77d77536e2190"
+    },
+    {
+      "path": "legal_rag/resources/core/sources/V1700016120.txt",
+      "bytes": 66256,
+      "sha256": "5d99a78e61c4f2350d300f11f4295eae28421b8f259fbb12380e02ba1e725e96"
+    },
+    {
+      "path": "legal_rag/resources/core/sources/V1900018545.json",
+      "bytes": 451085,
+      "sha256": "4a5262072c27037cd5c32c64a995392b48079bff93861c6a386707a5cf137828"
+    },
+    {
+      "path": "legal_rag/resources/core/sources/V1900018545.txt",
+      "bytes": 352403,
+      "sha256": "e91128c42a7fd9de2efe82f1db45b358e4bc9712b697492a758e0c6e48e36609"
+    },
+    {
+      "path": "legal_rag/resources/core/sources/V1900019680.json",
+      "bytes": 271713,
+      "sha256": "a72448c6b7ab377cde3eb9e4f01f20c2a9a50846be125558e86b982672902117"
+    },
+    {
+      "path": "legal_rag/resources/core/sources/V1900019680.txt",
+      "bytes": 214386,
+      "sha256": "2915bebaaaa3f0711f00b2a5c5b4a1b787bdd226545584c4915008f2fb56ce9a"
+    },
+    {
+      "path": "legal_rag/resources/core/sources/V2000020075.json",
+      "bytes": 50560,
+      "sha256": "8940cf121932e51581297d442edb582d01c6a369faa9089ea553ad98124112cc"
+    },
+    {
+      "path": "legal_rag/resources/core/sources/V2000020075.txt",
+      "bytes": 37669,
+      "sha256": "5fdd602133010a4fc00cc5b357711d4caf8fbc9bedc83a06e3a00352766d751f"
+    },
+    {
+      "path": "legal_rag/resources/core/sources.json",
+      "bytes": 15364,
+      "sha256": "a97903b62c63899ff85b448a2ec5aa3fd3182b71a067b5698367b7f133c26ff5"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/manifest.json",
+      "bytes": 69890,
+      "sha256": "fac8d6598b6a0d2a427e3dc9e1659d90f1d9952e50c2cf5b487d5970c5d04603"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/NBK-news-15960.html",
+      "bytes": 659199,
+      "sha256": "71572063d05e9040196d12540dc8085fb23b8a37253a57794915a8aefc7e87d3"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/NBK-news-15960.txt",
+      "bytes": 1471,
+      "sha256": "fc800ecab99fcf3278fd9dd2bb48b42679d9af23301172dee315883b36635482"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/NBK-news-17656.html",
+      "bytes": 664508,
+      "sha256": "b447237f3297fe44fb729c86711a338c8591711923e5867e2fd7cd754558ec17"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/NBK-news-17656.txt",
+      "bytes": 5091,
+      "sha256": "ce418047327bd14e52d4e1ebef193b840a658d3e8e6cd4d274b6a76591e444ac"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/U030001271_.json",
+      "bytes": 187909,
+      "sha256": "f8f51c51681e47bd2f25d0e5fa42b28e2420f8a2932e1cd5be0ec84db2610bdc"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/U030001271_.txt",
+      "bytes": 158622,
+      "sha256": "2d8618b342828eff5d27473d89e0db74e323a13fd902cf4e665d93c2300707e6"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/V1200007926.json",
+      "bytes": 19418,
+      "sha256": "3e3fa16946e50c51d174daf5d2741c13d2094a71f88c531210a98bb85fd540aa"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/V1200007926.txt",
+      "bytes": 12464,
+      "sha256": "31dd8fbec8093791f3ebac4da237fb1d43377024f9ebcfd879a6d10591c99270"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/V1600014419.json",
+      "bytes": 539925,
+      "sha256": "1605ed75187721ad1e972197717b7f65dbc552c8314cf09692f7befca96f71e8"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/V1600014419.txt",
+      "bytes": 424505,
+      "sha256": "cfffb3c6f8db3bb7cfb904c1c51ea5b01cd014e241773a89f4da32eb2b2455f5"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/V1600014422.json",
+      "bytes": 239542,
+      "sha256": "8a403e3c162092cfd4f5ef361cfa96e5d289d9db1a4ae9d7fede51ec92ef4c01"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/V1600014422.txt",
+      "bytes": 198367,
+      "sha256": "f31161793d57973cd7e823775c3d753d3a4fa0349d835d4fbc61b9296a3f9bda"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/V1700015541.json",
+      "bytes": 130845,
+      "sha256": "db2cf92ee717bfe0fe2a702c67557214bb38ae15d7b0f0d5ef0a5f6e07d59838"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/V1700015541.txt",
+      "bytes": 102259,
+      "sha256": "3fc26a5827145e4a49624ad00d3939b36e459d43f9c881b5b271e0fb721e32d0"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/V1700016120.json",
+      "bytes": 129219,
+      "sha256": "d67bff42f7101f5c41be9c915d27526ea999186b51ebb914ffd77d77536e2190"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/V1700016120.txt",
+      "bytes": 66256,
+      "sha256": "5d99a78e61c4f2350d300f11f4295eae28421b8f259fbb12380e02ba1e725e96"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/V1900018512.json",
+      "bytes": 203557,
+      "sha256": "20fd410f458cd180a18446939b8b1760547a68fe8722cd7d808300ff1b047614"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/V1900018512.txt",
+      "bytes": 168755,
+      "sha256": "34dd22816c98d52b3523012ab891348b0ce5f333dff5dbd6cb2e78d55a832eb0"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/V1900018545.json",
+      "bytes": 451085,
+      "sha256": "4a5262072c27037cd5c32c64a995392b48079bff93861c6a386707a5cf137828"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/V1900018545.txt",
+      "bytes": 352403,
+      "sha256": "e91128c42a7fd9de2efe82f1db45b358e4bc9712b697492a758e0c6e48e36609"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/V1900019680.json",
+      "bytes": 271713,
+      "sha256": "a72448c6b7ab377cde3eb9e4f01f20c2a9a50846be125558e86b982672902117"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/V1900019680.txt",
+      "bytes": 214386,
+      "sha256": "2915bebaaaa3f0711f00b2a5c5b4a1b787bdd226545584c4915008f2fb56ce9a"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/V2000020075.json",
+      "bytes": 50560,
+      "sha256": "8940cf121932e51581297d442edb582d01c6a369faa9089ea553ad98124112cc"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/V2000020075.txt",
+      "bytes": 37669,
+      "sha256": "5fdd602133010a4fc00cc5b357711d4caf8fbc9bedc83a06e3a00352766d751f"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/V2000021287.json",
+      "bytes": 17202,
+      "sha256": "4444a05438f8a2f958ee75aad046540db0223de92d7f872fcfe78b087efeb624"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/V2000021287.txt",
+      "bytes": 10902,
+      "sha256": "7fb3995b3c256c1f6147e10eab982954f1f8bbab439493dbd90b1977c81e8532"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/V2000021299.json",
+      "bytes": 273246,
+      "sha256": "dc59a076154e4cde85462d3160c88f9575234240268bf7a712b064847926876c"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/V2000021299.txt",
+      "bytes": 210469,
+      "sha256": "eedfe44735d5a3d15c084dbb54f0421a11014e9ffc2d0984307b45867ccd786d"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/V2400034348.json",
+      "bytes": 157858,
+      "sha256": "c693da1e5b3cbc9bf9c8e0191ad0562ca4da867c34907f68e96464990740ca51"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/V2400034348.txt",
+      "bytes": 127816,
+      "sha256": "57850777a3f81de191c991fae7c3a370729ae153a2f8b2df57a01cc17608a3ab"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/V2400035552.json",
+      "bytes": 26184,
+      "sha256": "7fca9c274fe5deb839759aabf71cf690b2c7ad78bc312ece18bfc6f0612697de"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/V2400035552.txt",
+      "bytes": 18561,
+      "sha256": "01e822f655377fb7a97d0d1dce3a439dbf08d0272d4c3cff3192bcbd8acdd66f"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/V2600038336.json",
+      "bytes": 183789,
+      "sha256": "a6623809dc5c822d509d1175f0c16014bf162d57eb7e27be46703cbbb87e378d"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/V2600038336.txt",
+      "bytes": 151548,
+      "sha256": "fbdc66feaf50a7550088ff9e699872f79ef3a2481f1554c336a30682b9637da7"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/V2600038748.json",
+      "bytes": 373305,
+      "sha256": "ed4227af95c5aa2100759cde5aa1471a543a3ec3a5f67a8fa2ab2bbcad2db0d8"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/V2600038748.txt",
+      "bytes": 312697,
+      "sha256": "5ac8578f673f3793e03f385fb1f7ad6f3bb6b1eb03ef27068ffba09f10b46d99"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/Z090000191_.json",
+      "bytes": 460772,
+      "sha256": "24dddca17fb239ca9903624e8dc2399d0ee813558ecb18c28b117ff260df48ab"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/Z090000191_.txt",
+      "bytes": 398452,
+      "sha256": "4b51b302a7a6f2da62c03e36108697b031b9484730e220fd76457be193eba6ff"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/Z1300000094.json",
+      "bytes": 185035,
+      "sha256": "f21b55bd9d62d3776565828e9fd4dacf9f2b32561fbae4ac39984bd5cf057527"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/Z1300000094.txt",
+      "bytes": 151038,
+      "sha256": "49c0b33f2d7a840d57c8b6b5c0930de8f83ba2619faf40ea5b6eabd8e1e88bf5"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/Z1600000011.json",
+      "bytes": 667124,
+      "sha256": "8fbf3a1d38d02c524446314faf59b0029e24db95ca85bec6027417adb4a5cfdf"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/Z1600000011.txt",
+      "bytes": 572792,
+      "sha256": "13235da1ac9fb81c854bb7c4b9e6b01605958997452d720936f42ea92e55d5bd"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/Z1800000167.json",
+      "bytes": 198134,
+      "sha256": "4b2b67c98cf2a032b7fcc276bc2143ba14f089881aa2da028fac82506c05a23f"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/Z1800000167.txt",
+      "bytes": 169033,
+      "sha256": "1c8cff75f4d6612604fefb43483936c5939dfea950fc1e00c354abed9b8337b3"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/Z2600000258.json",
+      "bytes": 1390545,
+      "sha256": "6e4c15685c52f5f30cfcac0c31873e5c435f1fcccefd915f2ac902ffc6075c74"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/Z2600000258.txt",
+      "bytes": 1202010,
+      "sha256": "fc97317afe44815861ce684e2b85dfe871618acb9216b331eaea528e4ebf0055"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/Z950002155_.json",
+      "bytes": 341911,
+      "sha256": "7ed0be5d66c226752cbf140270ae0236f0b06e9d68fef5bb7f16192c268f5e42"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/Z950002155_.txt",
+      "bytes": 268367,
+      "sha256": "b0ee3f7124b751f563357f07df2deec815628462a014ad451373e54de1973617"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/Z950002444_.json",
+      "bytes": 1672044,
+      "sha256": "dd159da6cdc2b436ad2e6804dd1baa529dd2497a4c248c5bd35c1d00349ef291"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/sources/Z950002444_.txt",
+      "bytes": 1407596,
+      "sha256": "4631e923727e8bd9021453f01250bad17cde9a97b883bfebad3c07b004c077ac"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v2/verification.json",
+      "bytes": 742,
+      "sha256": "6a1861b7331fbc7a802224b0786516040c40b0d3f7fe200288d1ee8aca04aca9"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/manifest.json",
+      "bytes": 132247,
+      "sha256": "6d298f129abf38795a146fa48687d5f8f8dbae6ea6db211ce0e7dc66b4ed4c25"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/NBK-news-10479.html",
+      "bytes": 659546,
+      "sha256": "d18c2265b919947bc37bb2ee92bc6880fad7f88e7aa329e18db401b62058ed3b"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/NBK-news-10479.txt",
+      "bytes": 2643,
+      "sha256": "850f009bb301c59b1e21a13fde2f4c04471781c9bd619546b208365021ce7ca2"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/NBK-news-12808.html",
+      "bytes": 659769,
+      "sha256": "07fb4d5cdabfaf90095585b5e4e45a3c397b1256809df1715f254e32e054c3c8"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/NBK-news-12808.txt",
+      "bytes": 1093,
+      "sha256": "5a48d7c918c32424413672008a58f8a2702a2816fcc9fd14e024aae775dc91e0"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/NBK-news-15960.html",
+      "bytes": 659199,
+      "sha256": "71572063d05e9040196d12540dc8085fb23b8a37253a57794915a8aefc7e87d3"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/NBK-news-15960.txt",
+      "bytes": 1471,
+      "sha256": "fc800ecab99fcf3278fd9dd2bb48b42679d9af23301172dee315883b36635482"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/NBK-news-17656.html",
+      "bytes": 664508,
+      "sha256": "b447237f3297fe44fb729c86711a338c8591711923e5867e2fd7cd754558ec17"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/NBK-news-17656.txt",
+      "bytes": 5091,
+      "sha256": "ce418047327bd14e52d4e1ebef193b840a658d3e8e6cd4d274b6a76591e444ac"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/NBK-news-19970.html",
+      "bytes": 665318,
+      "sha256": "e4ca44cdfc4588c08bd0f5d027885dc164c3dc0073d16a899185ac4ecf781f0e"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/NBK-news-19970.txt",
+      "bytes": 4090,
+      "sha256": "993fa94e043c315265604de444c081f21f2876e7c279cdc391baf69f56724f2e"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/P2100000234.json",
+      "bytes": 83083,
+      "sha256": "eda77d2c9dcc056f43ca3556f170f54b9e5f1886a528a3e9380cfb7ab0a715c8"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/P2100000234.txt",
+      "bytes": 62838,
+      "sha256": "70a1b2560e7b0989f8c0143739fcf69a8235e66053624319d906ec2fdc565a48"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/P2100000305.json",
+      "bytes": 138340,
+      "sha256": "3d9a433f0bce643b3dc67802cd620f4c57500c3bdb6d30565a18769a26f2cd69"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/P2100000305.txt",
+      "bytes": 110308,
+      "sha256": "6ced33125bebf09770bf72598e8b9d86c6006ac0cac3bcd55da84e5f067413a1"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/U030001271_.json",
+      "bytes": 187909,
+      "sha256": "f8f51c51681e47bd2f25d0e5fa42b28e2420f8a2932e1cd5be0ec84db2610bdc"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/U030001271_.txt",
+      "bytes": 158622,
+      "sha256": "2d8618b342828eff5d27473d89e0db74e323a13fd902cf4e665d93c2300707e6"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V1200007926.json",
+      "bytes": 19418,
+      "sha256": "3e3fa16946e50c51d174daf5d2741c13d2094a71f88c531210a98bb85fd540aa"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V1200007926.txt",
+      "bytes": 12464,
+      "sha256": "31dd8fbec8093791f3ebac4da237fb1d43377024f9ebcfd879a6d10591c99270"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V1200007978.json",
+      "bytes": 158170,
+      "sha256": "35bade898213f2e6d5ab30023e6f66ab690016f7d0b10e4949bce37b429f9179"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V1200007978.txt",
+      "bytes": 127584,
+      "sha256": "94dc2523f275fd9a5e4c39f0f70ec68b38da26a91cb2e8e2a2c33ccbc696bc0b"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V1500012946.json",
+      "bytes": 48591,
+      "sha256": "5ead7b8b3812684ce8bbb7b5054c82cae851acf7f620f620d39e7be5ab564010"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V1500012946.txt",
+      "bytes": 29326,
+      "sha256": "29f0e2781cfadbc14fccfa1815d22f0bc83d8f51f4e145a4ab6d2b8ae4e314c7"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V1600014337.json",
+      "bytes": 90192,
+      "sha256": "4c0153274b6569a539223d9731f8aeb80b830779dabedc477a7f763653a7aae4"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V1600014337.txt",
+      "bytes": 73043,
+      "sha256": "8152fefc7a0ee3fb8c0edc5e61ad98ab274b8956ec5f53a879a8d575b86f99a3"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V1600014419.json",
+      "bytes": 539925,
+      "sha256": "1605ed75187721ad1e972197717b7f65dbc552c8314cf09692f7befca96f71e8"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V1600014419.txt",
+      "bytes": 424505,
+      "sha256": "cfffb3c6f8db3bb7cfb904c1c51ea5b01cd014e241773a89f4da32eb2b2455f5"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V1600014422.json",
+      "bytes": 239542,
+      "sha256": "8a403e3c162092cfd4f5ef361cfa96e5d289d9db1a4ae9d7fede51ec92ef4c01"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V1600014422.txt",
+      "bytes": 198367,
+      "sha256": "f31161793d57973cd7e823775c3d753d3a4fa0349d835d4fbc61b9296a3f9bda"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V1700015084.json",
+      "bytes": 52466,
+      "sha256": "d5ffd32cc3bfed18224efde583f85f89df57e782133a7ba089d388c715067ef2"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V1700015084.txt",
+      "bytes": 39255,
+      "sha256": "54a32b4223f13830d41c2fe7ddcc98d768e7769468cb5dc5228f19b148310390"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V1700015541.json",
+      "bytes": 130845,
+      "sha256": "db2cf92ee717bfe0fe2a702c67557214bb38ae15d7b0f0d5ef0a5f6e07d59838"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V1700015541.txt",
+      "bytes": 102259,
+      "sha256": "3fc26a5827145e4a49624ad00d3939b36e459d43f9c881b5b271e0fb721e32d0"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V1700016120.json",
+      "bytes": 129219,
+      "sha256": "d67bff42f7101f5c41be9c915d27526ea999186b51ebb914ffd77d77536e2190"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V1700016120.txt",
+      "bytes": 66256,
+      "sha256": "5d99a78e61c4f2350d300f11f4295eae28421b8f259fbb12380e02ba1e725e96"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V1800017250.json",
+      "bytes": 33792,
+      "sha256": "344e0dc4fb7329f470acbdf73b2a6b1af147de4027eea1bf1d1c99810b8cc063"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V1800017250.txt",
+      "bytes": 24231,
+      "sha256": "d56dccb369c02d31f3009d45bcd1ee84d12a616b23a669a9caa662ddeabfde3e"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V1900018512.json",
+      "bytes": 203557,
+      "sha256": "20fd410f458cd180a18446939b8b1760547a68fe8722cd7d808300ff1b047614"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V1900018512.txt",
+      "bytes": 168755,
+      "sha256": "34dd22816c98d52b3523012ab891348b0ce5f333dff5dbd6cb2e78d55a832eb0"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V1900018545.json",
+      "bytes": 451085,
+      "sha256": "4a5262072c27037cd5c32c64a995392b48079bff93861c6a386707a5cf137828"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V1900018545.txt",
+      "bytes": 352403,
+      "sha256": "e91128c42a7fd9de2efe82f1db45b358e4bc9712b697492a758e0c6e48e36609"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V1900019680.json",
+      "bytes": 271713,
+      "sha256": "a72448c6b7ab377cde3eb9e4f01f20c2a9a50846be125558e86b982672902117"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V1900019680.txt",
+      "bytes": 214386,
+      "sha256": "2915bebaaaa3f0711f00b2a5c5b4a1b787bdd226545584c4915008f2fb56ce9a"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2000020075.json",
+      "bytes": 50560,
+      "sha256": "8940cf121932e51581297d442edb582d01c6a369faa9089ea553ad98124112cc"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2000020075.txt",
+      "bytes": 37669,
+      "sha256": "5fdd602133010a4fc00cc5b357711d4caf8fbc9bedc83a06e3a00352766d751f"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2000020160.json",
+      "bytes": 161742,
+      "sha256": "a7b8d21e3079b9944e03814d538f236cf524b86262f10eaf25cb8993f399cc72"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2000020160.txt",
+      "bytes": 136046,
+      "sha256": "aaae4355db165a69f10202407267b76aabc5c56be3318751ea7bec5a39b9b325"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2000021287.json",
+      "bytes": 17202,
+      "sha256": "4444a05438f8a2f958ee75aad046540db0223de92d7f872fcfe78b087efeb624"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2000021287.txt",
+      "bytes": 10902,
+      "sha256": "7fb3995b3c256c1f6147e10eab982954f1f8bbab439493dbd90b1977c81e8532"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2000021299.json",
+      "bytes": 273246,
+      "sha256": "dc59a076154e4cde85462d3160c88f9575234240268bf7a712b064847926876c"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2000021299.txt",
+      "bytes": 210469,
+      "sha256": "eedfe44735d5a3d15c084dbb54f0421a11014e9ffc2d0984307b45867ccd786d"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2000021329.json",
+      "bytes": 30446,
+      "sha256": "814b23e492704b6359c9772658ecdd7e08e8d97877aaea62b1923008c1f6915b"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2000021329.txt",
+      "bytes": 20758,
+      "sha256": "00afca7c49038f6350a725359299d140ce8fd5ffad72ccc8cefc26921d8e84e1"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2000021498.json",
+      "bytes": 58126,
+      "sha256": "c831d01c006c9d79972a23092208d63c046986c3a9068759c4636b52717e1931"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2000021498.txt",
+      "bytes": 43782,
+      "sha256": "83843ea1d475201dc2788c333cde4184d831ea76e033519d4af222a3f5dcd203"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2200026867.json",
+      "bytes": 1087927,
+      "sha256": "0259e3acb6b1aa9d30425cbcb0be2cb498f4d481603f3f12150881544eebd546"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2200026867.txt",
+      "bytes": 901153,
+      "sha256": "a47037abd1c8bb646cd88582560f9f88abc916d6dd6aed2756ccf13d3b75fced"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2200031252.json",
+      "bytes": 207507,
+      "sha256": "4f9f3d117836ffccd992428e739abf91f546f27ebc33097325c0319b73f2e466"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2200031252.txt",
+      "bytes": 156833,
+      "sha256": "f656cc7afb899de846a8c87107a29095f8f11db7ca675bff98a64e00a6ae2fc5"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2400034348.json",
+      "bytes": 157858,
+      "sha256": "c693da1e5b3cbc9bf9c8e0191ad0562ca4da867c34907f68e96464990740ca51"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2400034348.txt",
+      "bytes": 127816,
+      "sha256": "57850777a3f81de191c991fae7c3a370729ae153a2f8b2df57a01cc17608a3ab"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2400034746.json",
+      "bytes": 86433,
+      "sha256": "b21dd7a7186bd24d8facd3c3dd4c95df819d14bcaff6f87f0bfdeeb6bc6fcb51"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2400034746.txt",
+      "bytes": 26689,
+      "sha256": "bde9efe45735548f4f4442f37eb8c17b8b01dffaaaefe9d9f562ca3084e3a070"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2400035552.json",
+      "bytes": 26184,
+      "sha256": "7fca9c274fe5deb839759aabf71cf690b2c7ad78bc312ece18bfc6f0612697de"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2400035552.txt",
+      "bytes": 18561,
+      "sha256": "01e822f655377fb7a97d0d1dce3a439dbf08d0272d4c3cff3192bcbd8acdd66f"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2500036407.json",
+      "bytes": 19744,
+      "sha256": "ea7493c0b4e2790b3422c27a6c80c42673819c1e7ce068574c9e043c543f2678"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2500036407.txt",
+      "bytes": 11217,
+      "sha256": "359c84010a5996e6f3ef1554d74972146f0e420cd025a107592c23ba4f85f017"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2500037429.json",
+      "bytes": 100575,
+      "sha256": "6dd1bd600032b90661a239e8f459edda6f3510dc07fb80dc0a40c5c11de1fdd6"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2500037429.txt",
+      "bytes": 72674,
+      "sha256": "5c7e34f5b9237b76936e03f4e521eff118d5dda66688cf6b02e13c1dd09fb153"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2500037561.json",
+      "bytes": 179278,
+      "sha256": "d914659e07a627dddb71010805ab24507a5bf8d8d3522119cb5296e9a44d527f"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2500037561.txt",
+      "bytes": 120895,
+      "sha256": "c7ad2b9c511a2014346961df53b1d1f87d544de8864c6e8577b991c7a9234800"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2600038217.json",
+      "bytes": 127240,
+      "sha256": "e52485e3f7f8da20d3d14818f19b3f5cdbe0ebff0b34f71dd54144a64a201f6f"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2600038217.txt",
+      "bytes": 95690,
+      "sha256": "2886b240b3ad9f507ba4f0b1fc9b2f77d34f0bf782c21a94412962a30dbdddcd"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2600038336.json",
+      "bytes": 183789,
+      "sha256": "a6623809dc5c822d509d1175f0c16014bf162d57eb7e27be46703cbbb87e378d"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2600038336.txt",
+      "bytes": 151548,
+      "sha256": "fbdc66feaf50a7550088ff9e699872f79ef3a2481f1554c336a30682b9637da7"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2600038748.json",
+      "bytes": 373305,
+      "sha256": "ed4227af95c5aa2100759cde5aa1471a543a3ec3a5f67a8fa2ab2bbcad2db0d8"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2600038748.txt",
+      "bytes": 312697,
+      "sha256": "5ac8578f673f3793e03f385fb1f7ad6f3bb6b1eb03ef27068ffba09f10b46d99"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2600039042.json",
+      "bytes": 251012,
+      "sha256": "afa815d989b792f1583c7aa1529fae676d6ae1039171fc53058caf4f1843acad"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2600039042.txt",
+      "bytes": 185616,
+      "sha256": "c1d9b0f8a3f2ea108dd137d60c425432a3f49224ff0158d8112ae82efaecc009"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2600039096.json",
+      "bytes": 25847,
+      "sha256": "11063991e10ff723d1b2c62e39014e71917c62ef7406881fdb82817cee4bbf9b"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2600039096.txt",
+      "bytes": 17344,
+      "sha256": "b888b50e3e333a5f10598a70ead257aece6008eb9fcd3c71c0534a17f41666e8"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2600039191.json",
+      "bytes": 553018,
+      "sha256": "82178c08f1ca8b0e4f3966debd2cc995000bbbe07ed72c42901a6bf7a048b4d4"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2600039191.txt",
+      "bytes": 392267,
+      "sha256": "453be22d22faef58775f83e8786b28b54db2ce2894eb44b0abfb71449f378a20"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2600039449.json",
+      "bytes": 26558,
+      "sha256": "e37a6052374006d834a4ea284d5d2f13be3a6feb9a5c32eb593a4d581d8e8d0a"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/V2600039449.txt",
+      "bytes": 17635,
+      "sha256": "791b469c7e8c550b1ddf92de3991f96518d462788474c19aa61e534128ef0a4a"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/Z000000085_.json",
+      "bytes": 121559,
+      "sha256": "439fb0a6d0d9bcc71d7f486c92910b8b113ca182fbc1f706c9a87441cf0eb841"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/Z000000085_.txt",
+      "bytes": 94480,
+      "sha256": "d4a79e90eaf8fa24c7a868fde900c3d007cdb0a7e889f93a496ca6ab6acdf79f"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/Z070000234_.json",
+      "bytes": 135679,
+      "sha256": "e972e7dca768c8f77eef7f1f7c6854366ad457631e41a52a34c2dd2c23725b14"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/Z070000234_.txt",
+      "bytes": 107864,
+      "sha256": "4ac55595bb596674a5f3f5764f2730a22488618e4707fb1d41c407629f184781"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/Z090000191_.json",
+      "bytes": 460772,
+      "sha256": "24dddca17fb239ca9903624e8dc2399d0ee813558ecb18c28b117ff260df48ab"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/Z090000191_.txt",
+      "bytes": 398452,
+      "sha256": "4b51b302a7a6f2da62c03e36108697b031b9484730e220fd76457be193eba6ff"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/Z1300000073.json",
+      "bytes": 84360,
+      "sha256": "d8ccfd9f1f829c2e2b788b0bc8332dc299955f8cca5966e05ad38865aa32a98b"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/Z1300000073.txt",
+      "bytes": 62660,
+      "sha256": "4463d9e9d2df0f38662f710e3130328bd3c722c865856c643e01a8efdafd714c"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/Z1300000094.json",
+      "bytes": 185035,
+      "sha256": "f21b55bd9d62d3776565828e9fd4dacf9f2b32561fbae4ac39984bd5cf057527"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/Z1300000094.txt",
+      "bytes": 151038,
+      "sha256": "49c0b33f2d7a840d57c8b6b5c0930de8f83ba2619faf40ea5b6eabd8e1e88bf5"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/Z1400000188.json",
+      "bytes": 934720,
+      "sha256": "714b44d847a72346dd060ea070fb46e8bd8ef0e080afa09026b3c4d8c3dd3e5b"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/Z1400000188.txt",
+      "bytes": 773687,
+      "sha256": "edc86a2748364d4b4f7d11ff476bc15a0f0048fdfa8cb561c95ee661b45ff2ce"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/Z1600000011.json",
+      "bytes": 667124,
+      "sha256": "8fbf3a1d38d02c524446314faf59b0029e24db95ca85bec6027417adb4a5cfdf"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/Z1600000011.txt",
+      "bytes": 572792,
+      "sha256": "13235da1ac9fb81c854bb7c4b9e6b01605958997452d720936f42ea92e55d5bd"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/Z1800000167.json",
+      "bytes": 198134,
+      "sha256": "4b2b67c98cf2a032b7fcc276bc2143ba14f089881aa2da028fac82506c05a23f"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/Z1800000167.txt",
+      "bytes": 169033,
+      "sha256": "1c8cff75f4d6612604fefb43483936c5939dfea950fc1e00c354abed9b8337b3"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/Z2600000258.json",
+      "bytes": 1390545,
+      "sha256": "6e4c15685c52f5f30cfcac0c31873e5c435f1fcccefd915f2ac902ffc6075c74"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/Z2600000258.txt",
+      "bytes": 1202010,
+      "sha256": "fc97317afe44815861ce684e2b85dfe871618acb9216b331eaea528e4ebf0055"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/Z950002155_.json",
+      "bytes": 341911,
+      "sha256": "7ed0be5d66c226752cbf140270ae0236f0b06e9d68fef5bb7f16192c268f5e42"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/Z950002155_.txt",
+      "bytes": 268367,
+      "sha256": "b0ee3f7124b751f563357f07df2deec815628462a014ad451373e54de1973617"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/Z950002444_.json",
+      "bytes": 1672044,
+      "sha256": "dd159da6cdc2b436ad2e6804dd1baa529dd2497a4c248c5bd35c1d00349ef291"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/Z950002444_.txt",
+      "bytes": 1407596,
+      "sha256": "4631e923727e8bd9021453f01250bad17cde9a97b883bfebad3c07b004c077ac"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/Z990000416_.json",
+      "bytes": 232063,
+      "sha256": "658e2cb53494726905796370af4d8b0619f7787ceb2d33e9b9247d9788001454"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/sources/Z990000416_.txt",
+      "bytes": 191469,
+      "sha256": "b6f140f8236ba276abd7fd871d8e78cf8c90417dfb59df77c747b197237186e4"
+    },
+    {
+      "path": "legal_rag/resources/corpora/legal_corpus_v3/verification.json",
+      "bytes": 858,
+      "sha256": "0bfbaa8eab1a4860797a362a0a88448b2f303c3e20982fac87a1ed8fe9360fb8"
+    },
+    {
+      "path": "legal_rag/resources/tokenizer/APACHE-LICENSE",
+      "bytes": 11349,
+      "sha256": "a41e2fae9915ae56028f8dbd0bf27995f1907613cbcd2d81a61b010ad34e9fe9"
+    },
+    {
+      "path": "legal_rag/resources/tokenizer/NOTICE.txt",
+      "bytes": 178,
+      "sha256": "8b09718d2dc5a961269fd7ed053078b850b34c595bae49887add9b6022a36f09"
+    },
+    {
+      "path": "legal_rag/resources/tokenizer/provenance.json",
+      "bytes": 317,
+      "sha256": "21a04ec1e166d1eaae9cfdde3c63df5ba7a454bd249bac0b92892b9d0424ff0c"
+    },
+    {
+      "path": "legal_rag/resources/tokenizer/tokenizer.json",
+      "bytes": 7032403,
+      "sha256": "a5d85b6dcc535e6b93115a9ef287e6132fdbf30270da6218194ba742261173c7"
+    },
+    {
+      "path": "legal_rag/resources/tokenizer/tokenizer_config.json",
+      "bytes": 10868,
+      "sha256": "c2da771801886ad9ae98181793ffd3dfb7f1af30f6f7c6a4e15d7dbba52e2399"
+    },
+    {
+      "path": "legal_rag/resources.py",
+      "bytes": 4552,
+      "sha256": "77e6d569d909f6b9b994cb969db34a78c6e9bc418c7198a3c264b4bf9bd158e2"
+    },
+    {
+      "path": "legal_rag/retrieve.py",
+      "bytes": 8810,
+      "sha256": "7551b012c0efe45309f74eb2d5413f56b417565ce34eb8e9ec29151af6f5ecd3"
+    },
+    {
+      "path": "legal_rag/source_fetch.py",
+      "bytes": 1329,
+      "sha256": "c05e8812b7779ed7a7b672eaaa00023c2402218b39616cfb3bbceb2e36c6a314"
+    },
+    {
+      "path": "legal_rag/source_packet.py",
+      "bytes": 12763,
+      "sha256": "b1f2b6f53e4f12858c6740e38beafe77f5470d4d4b032ef8a56f4790407d8c0e"
+    },
+    {
+      "path": "legal_rag/tests/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "legal_rag/tests/test_audit_regressions.py",
+      "bytes": 5559,
+      "sha256": "65c05ca011f69b130ebe9cd1bef9cd02c44164bf62a36867591a47ff7a0dc09e"
+    },
+    {
+      "path": "legal_rag/tests/test_cards_packer.py",
+      "bytes": 3892,
+      "sha256": "e0a03992fdffb08b69ae041a96771edecd1413b260b91df211fc33567b50f266"
+    },
+    {
+      "path": "legal_rag/tests/test_contracts.py",
+      "bytes": 10189,
+      "sha256": "d5f84c3fba3d1741b0aea424aefc246ae0209b2523a8c923c976595fed4385d5"
+    },
+    {
+      "path": "legal_rag/tests/test_corpus.py",
+      "bytes": 3490,
+      "sha256": "a7d95e07b5623124479c2cfc35e07211cd0c71f3025d8651295346e430e6c66b"
+    },
+    {
+      "path": "legal_rag/tests/test_decide.py",
+      "bytes": 4785,
+      "sha256": "ef069687631dad668a0f82e422aeb08568c41fb26e24e0b02021002ba00f56e4"
+    },
+    {
+      "path": "legal_rag/tests/test_generation_pipeline.py",
+      "bytes": 14157,
+      "sha256": "f7d88d1a757d30a39a265656e2b33c6b93298b07bd40d9d948b253bb1ab77d90"
+    },
+    {
+      "path": "legal_rag/tests/test_library.py",
+      "bytes": 5195,
+      "sha256": "70e2aead669a144b125eb0a60d0d03900aeb12add458f968caa72c163437b120"
+    },
+    {
+      "path": "legal_rag/tests/test_neural_retrieval.py",
+      "bytes": 7654,
+      "sha256": "17268dd97e7d86c92dde18943758e7ae2368dfa33a89ddb41eb6cb711f7d7a52"
+    },
+    {
+      "path": "legal_rag/tests/test_refs.py",
+      "bytes": 3227,
+      "sha256": "b3088f9980b93879ce0727449a49c56d700d1d50b3ecac27fba68cb4d0196387"
+    },
+    {
+      "path": "legal_rag/tests/test_search.py",
+      "bytes": 5970,
+      "sha256": "32697b0e7bee571e9083ad3f97870552ab6b6232f74bb679e162f3513c654c06"
+    },
+    {
+      "path": "legal_rag/tests/test_units.py",
+      "bytes": 6151,
+      "sha256": "5864cd7c953e9b5212b70ba1a3163b348072b7d9201871f3aa4392ddf0bbd2c3"
+    },
+    {
+      "path": "legal_rag/text.py",
+      "bytes": 5104,
+      "sha256": "54ec50ef2d8a9bd554ee5b08ef2a590f929c24b219cade1a548bc783b40ffa8f"
+    },
+    {
+      "path": "legal_rag/tokens.py",
+      "bytes": 2439,
+      "sha256": "e2e00ca746cbe8db169302dbc0e7d4f7a1909ef6571088c98178a9fdfe22b17e"
+    },
+    {
+      "path": "legal_rag/types.py",
+      "bytes": 5685,
+      "sha256": "9bcc0c173502bbd50cbb80195bbd56626e797d61ce76abe472eb8038acef354e"
+    },
+    {
+      "path": "legal_rag/units.py",
+      "bytes": 23666,
+      "sha256": "adb6b60a8a363f1e88cc4e7b368951a5ce6c87c849d6e5695031f32b108068d9"
+    },
+    {
+      "path": "legal_rag/validate.py",
+      "bytes": 11176,
+      "sha256": "d9e408b138402572a8f7f85149ebecc956fa9d968913fd0009309f23ad9c2e3d"
+    },
+    {
+      "path": "pyproject.toml",
+      "bytes": 549,
+      "sha256": "a58fd78a9a5a3c20b56d4cb79fa2ab22ebb8a5ffcdbcec08cc1f1f4d69a7af3d"
+    },
+    {
+      "path": "README.md",
+      "bytes": 7208,
+      "sha256": "818ef4e427e08efc16869d047fc98b4e40b21be380a921e92a56948ef1c58e34"
+    },
+    {
+      "path": "smoke.py",
+      "bytes": 1193,
+      "sha256": "5d033325ad32f2fc4af11bd112bf1733e3c2e79ca44f95fdc5c0f0d06cae9b5a"
+    },
+    {
+      "path": "VERIFICATION.json",
+      "bytes": 760,
+      "sha256": "9131d54a65415fbd3b8f7077e928b95b0be26bbf86db42d48f8d473f46880453"
+    }
+  ]
+}

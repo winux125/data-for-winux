@@ -1,0 +1,20 @@
+.cf-root { min-width: 0; padding: 0 var(--fv-section-pad,24px) 22px; }
+.cf-folder-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); align-items: start; gap: 17px; min-width: 0; }
+.cf-folder-grid .gf-folder-title { font-size: 13px; line-height: 1.4; letter-spacing: 0; }
+.cf-view-note { margin: 19px 0 0; color: var(--theme-muted, #6f5d6a); font-size: 11px; line-height: 1.8; }
+.cf-other-checks { margin-top: 22px; padding: 17px; border: 1px solid #eddee6; border-radius: 11px; background: #fdfafb; }
+.cf-other-checks h3 { margin: 0; color: #6b3f56; font-size: 13px; font-weight: 500; }
+.cf-other-checks > p { margin: 5px 0 12px; color: var(--theme-muted, #6f5d6a); font-size: 12px; }
+.cf-other-checks ul { display: block; margin: 0; padding: 0; list-style: none; }
+.cf-other-checks button { display: flex; align-items: center; justify-content: space-between; gap: 14px; width: 100%; min-height: 44px; padding: 8px 0; border: 0; background: transparent; color: #6b3f56; text-align: left; cursor: pointer; }
+.cf-other-checks button > span { min-width: 0; overflow-wrap: anywhere; font-size: 12px; }
+.cf-other-checks button > small { flex-shrink: 0; color: #9e7b90; font-size: 11px; }
+.cf-other-checks button:focus-visible { outline: 2px solid #a31551; outline-offset: 3px; }
+[data-theme="dark"] .cf-view-note, [data-theme="dark"] .cf-other-checks > p { color: #c5aaba; }
+[data-theme="dark"] .cf-other-checks { border-color: #644154; background: #2e1e29; }
+[data-theme="dark"] .cf-other-checks h3, [data-theme="dark"] .cf-other-checks button { color: #f4dce9; }
+[data-theme="dark"] .cf-other-checks button > small { color: #c5aaba; }
+@media(max-width:1199px) and (min-width:1024px) { .cf-folder-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media(max-width:850px) { .cf-folder-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media(max-width:600px) { .cf-folder-grid { grid-template-columns: minmax(0,1fr); gap: 19px; } .cf-root { padding-bottom: 20px; } .cf-folder-grid > .gf-root { width: 100%; max-width: 420px; margin-inline: auto; } .cf-view-note { font-size: 12px; } .cf-other-checks { padding: 15px; } }
+@media(max-width:380px) { .cf-root { padding-inline: 14px; } .cf-other-checks button { flex-wrap: wrap; gap: 4px 12px; } }

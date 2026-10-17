@@ -1,0 +1,13 @@
+[Unit]
+Description=Forte Vision production frontend
+After=docker.service
+Requires=docker.service
+[Service]
+WorkingDirectory=/home/shadeform/forte-service
+ExecStartPre=-/usr/bin/docker rm forte-vision
+ExecStart=/usr/bin/docker run --rm --name forte-vision --publish 127.0.0.1:3000:3000 --env NODE_ENV=production --cap-drop ALL --security-opt no-new-privileges forte-vision:deployment
+ExecStop=/usr/bin/docker stop -t 15 forte-vision
+Restart=always
+RestartSec=5
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,26 @@
+{
+  "library_id": "kz-banking-open-sources-2026-10-17-v2",
+  "sources": 25,
+  "chunks": 1606,
+  "roles": {
+    "guidance": 2,
+    "background": 7,
+    "operational": 11,
+    "historical_reference": 2,
+    "amendment": 2,
+    "reference_only": 1
+  },
+  "source_hashes_verified": true,
+  "manifest_sha256": "fac8d6598b6a0d2a427e3dc9e1659d90f1d9952e50c2cf5b487d5970c5d04603",
+  "network_required": false,
+  "legal_verdict_enabled": false,
+  "tests_passed": 40,
+  "text_characters": 3697692,
+  "sources_by_provider": [
+    "official Adilet public API",
+    "official National Bank website"
+  ],
+  "baseline_frozen_sources": 5,
+  "baseline_section_brief_unchanged": true,
+  "quality_evaluation_on_blind_queries": false
+}

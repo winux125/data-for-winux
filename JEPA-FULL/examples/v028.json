@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "status": "ok",
+  "model": "JEPA-FULL",
+  "label": 1,
+  "label_name": "нарушение",
+  "violation_detected": true,
+  "score": 0.7310861157058294,
+  "score_type": "uncalibrated_blend_score",
+  "threshold": 0.5,
+  "timecode_sec": 10.010503832956035,
+  "timecode": "00:00:10.011",
+  "events": [
+    {
+      "timecode_sec": 10.010503832956035,
+      "timecode": "00:00:10.011"
+    }
+  ],
+  "timestamp_status": "estimated",
+  "video": "/home/ubuntu/forte-vlm/open/videos/Х-28.mov",
+  "duration_sec": 16.533021,
+  "latency_sec": 7.257852719001676,
+  "device": "cuda",
+  "encoder_precision": "bfloat16",
+  "cpu_threads": 4,
+  "model_manifest_sha256": "4a9daa4b34d2a97d798c33535192c8b20727c8ce2aa3985c6f3b22bf0a155245"
+}
