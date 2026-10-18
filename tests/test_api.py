@@ -1,6 +1,7 @@
 import base64
 import io
 import time
+from types import SimpleNamespace
 
 import pytest
 from fastapi.testclient import TestClient
@@ -19,6 +20,8 @@ def client(tmp_path, monkeypatch):
     uploads.mkdir()
     monkeypatch.setattr(api, 'UPLOADS', uploads)
     monkeypatch.setattr(store, 'UPLOADS', uploads)
+    # Contract tests must not depend on free space on the developer/CI disk.
+    monkeypatch.setattr(api.shutil, 'disk_usage', lambda path: SimpleNamespace(free=api.MIN_FREE_BYTES))
     with TestClient(api.app) as client:
         store.worker_state(True, 'ready')
         yield client
@@ -67,6 +70,19 @@ def test_rejects_empty_unsupported_and_oversized_uploads(client, monkeypatch):
     monkeypatch.setattr(api, 'MAX_BYTES', 4)
     assert upload(client, data=b'12345').status_code == 413
     assert list(api.UPLOADS.iterdir()) == []
+
+
+@pytest.mark.parametrize('route', ['/api/v1/analyze', '/api/browser/analyze'])
+def test_insufficient_storage_rejects_without_creating_job(client, monkeypatch, route):
+    key = KEY
+    if route == '/api/browser/analyze':
+        key = client.post('/api/browser/session', headers={'Origin': 'http://testserver'}).json()['token']
+    monkeypatch.setattr(api.shutil, 'disk_usage', lambda path: SimpleNamespace(free=api.MIN_FREE_BYTES - 1))
+    response = client.post(route, headers={'X-API-Key': key}, files={'file': ('clip.mov', b'video')})
+    assert response.status_code == 507
+    assert response.json() == {'detail': 'Insufficient upload storage'}
+    assert list(api.UPLOADS.iterdir()) == []
+    assert store.claim() is None
 
 
 def test_models_loading_and_more_than_two_jobs_are_durably_accepted(client):
