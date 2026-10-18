@@ -238,6 +238,21 @@ test("valid evidence is preserved and a missing rule stays absent", async () => 
   assert.equal(h.api.evidenceDataUrl("https://untrusted.example/frame.png"), null);
 });
 
+test("source quotes and related full provisions survive response parsing", async () => {
+  const h = harness(); const result = h.api.analyzeVideo(file(), config);
+  const quote = "Начало пункта.\n" + "Полный текст без обрезки. ".repeat(200) + "Конец пункта.";
+  const rule = {title:"Правила", section:"п. 75", quote, unit_id:"act:rules1:p75",
+    path:["Глава 3", "п. 75"],source_relation:"candidate_clause",
+    context:[{title:"Правила",section:"п. 2",quote:"Определение и исключение полностью."}]};
+  h.uploads[0].respond(completed({verdict:"violation", violations:[{
+    type:"event",timecode_sec:4,description:"Observed",evidence_frames:[],rule}]}),200);
+  const received = (await result).violations[0].rule;
+  assert.equal(received.quote, quote);
+  assert.equal(received.path.join(" → "), "Глава 3 → п. 75");
+  assert.equal(received.context[0].quote, rule.context[0].quote);
+  assert.equal(received.source_relation,"candidate_clause");
+});
+
 test("server failure is surfaced without producing a completed result", async () => {
   const h = harness();
   const result = h.api.analyzeVideo(file(), config);

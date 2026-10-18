@@ -52,7 +52,9 @@ if __name__ == '__main__':
     parser.add_argument('--key-file', type=Path, default=Path('secrets/service.env'))
     parser.add_argument('--output', type=Path, default=Path('data/public-smoke'))
     args = parser.parse_args()
-    key = args.key_file.read_text().strip().split('=', 1)[1]
+    entries = dict(line.split('=', 1) for line in args.key_file.read_text().splitlines()
+                   if line.strip() and not line.lstrip().startswith('#') and '=' in line)
+    key = entries['FORTE_API_KEY'].strip().strip('\"').strip("'")
     args.output.mkdir(parents=True, exist_ok=True)
     for video in args.videos:
         result = run(args.base.rstrip('/'), key, video)

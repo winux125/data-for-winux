@@ -128,3 +128,21 @@ def test_browser_config_does_not_expose_jury_key(client):
     body=client.get('/api/browser/config').json()
     assert body['max_upload_bytes']==10*1024**3
     assert KEY not in str(body)
+
+
+def test_openapi_describes_all_three_job_states_and_upload_field(client):
+    schema = client.get('/openapi.json').json()
+    result = schema['paths']['/api/v1/jobs/{job_id}']['get']['responses']['200']['content']['application/json']['schema']
+    assert result['discriminator']['propertyName'] == 'status'
+    assert set(result['discriminator']['mapping']) == {'done', 'processing', 'failed'}
+    request = schema['paths']['/api/v1/analyze']['post']['requestBody']['content']['multipart/form-data']['schema']
+    body = schema['components']['schemas'][request['$ref'].split('/')[-1]]
+    assert 'file' in body['required']
+
+
+def test_compressed_schema_is_optional_and_decodes_identically(client):
+    compressed = client.get('/openapi.json', headers={'Accept-Encoding':'gzip'})
+    plain = client.get('/openapi.json', headers={'Accept-Encoding':'identity'})
+    assert compressed.headers['content-encoding'] == 'gzip'
+    assert 'content-encoding' not in plain.headers
+    assert compressed.json() == plain.json()

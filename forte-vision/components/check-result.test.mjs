@@ -110,7 +110,9 @@ test("server progress is visible, zero is real, and absent progress stays indete
     assert.ok(html.includes(`Обработано ${value}%`)); assert.ok(html.includes(`aria-valuenow="${value}"`)); assert.ok(html.includes(`width:${value}%`));
   }
   const html=render({...base,status:"processing",result:undefined});
-  assert.ok(html.includes("Сервер не сообщил процент")); assert.ok(!html.includes("aria-valuenow="));
+  assert.ok(html.includes("Сервер анализирует видео. Результат появится автоматически."));
+  assert.ok(html.includes('role="progressbar"')); assert.ok(html.includes("fv-indeterminate"));
+  assert.ok(!html.includes("aria-valuenow="));
 });
 test("100 intersecting events render a compact grouped marker and a complete-list control", () => {
   const html=render({...base,events:100,result:{...base.result,violations:Array(100).fill(base.result.violations[0])}});
@@ -131,4 +133,20 @@ test("a rejected frame renders a placeholder without losing the event explanatio
     const html=render({...base,result:{...base.result,violations:[{...base.result.violations[0],evidence_frames:[{timestamp_sec:22,image_base64:"",image_issue:"size"}]}]}});
     assert.ok(html.includes("Кадр превышает лимит 2 МБ")); assert.ok(html.includes(description)); assert.ok(!html.includes('<img'));
   } finally { playerOverride=undefined; navigationOverride=false; }
+});
+
+test("the event renders the entire source quote, hierarchy and related exceptions as plain text", () => {
+  const quote = "Начало пункта. " + "Полная строка. ".repeat(200) + "Хвост полного пункта <script>alert(1)</script>";
+  try {
+    navigationOverride=true;
+    const rule={title:"Правила",section:"п. 75",quote,path:["Глава 3","п. 75"],
+      context:[{title:"Связанный источник",section:"п. 2",quote:"Полное исключение для операции."}]};
+    const html=render({...base,result:{...base.result,violations:[{...base.result.violations[0],rule}]}});
+    assert.ok(html.includes("Цитата из источника"));
+    assert.ok(html.includes("Глава 3 → п. 75"));
+    assert.ok(html.includes("Хвост полного пункта &lt;script&gt;alert(1)&lt;/script&gt;"));
+    assert.ok(html.includes("Полное исключение для операции."));
+    assert.ok(!html.includes("<script>alert(1)</script>"));
+    assert.ok(html.includes("Связанные положения и исключения"));
+  } finally { navigationOverride=false; }
 });

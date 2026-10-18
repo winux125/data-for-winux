@@ -1,0 +1,6 @@
+{
+  "mode": "possible_indications",
+  "negative_classifier_early_exit": true,
+  "legal_uncertainty_is_processing_error": false,
+  "context_citation_is_breach_proof": false
+}

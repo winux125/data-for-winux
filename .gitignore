@@ -8,6 +8,7 @@ __pycache__/
 *.mov
 *.xlsx
 JEPA-FULL/weights/
+model_packages/*/weights/
 *.log
 source.tar.gz
 .vercel/
@@ -48,3 +49,6 @@ forte-vision/.sites-runtime/
 forte-vision/.wrangler/
 forte-vision/test-results/
 forte-vision/playwright-report/
+
+# Generated versioned runtime overlays
+/releases/

@@ -1,5 +1,11 @@
 {
-  "model_id": "models/qwen3-vl-8b", "revision": null, "device": "cuda:0",
-  "dtype": "bfloat16", "batch_size": 1, "max_input_tokens": 10000,
-  "max_new_tokens": 1000, "local_files_only": true, "enabled": true
+  "model_id": "models/qwen3-vl-8b",
+  "revision": null,
+  "device": "cuda:0",
+  "dtype": "bfloat16",
+  "batch_size": 1,
+  "max_input_tokens": 24576,
+  "max_new_tokens": 1800,
+  "local_files_only": true,
+  "enabled": true
 }

@@ -40,6 +40,7 @@ function harness(moduleName,hookName,args=()=>[],href="https://frontend.example/
   const hook=load(moduleName)[hookName];function render(){cursor=0;value=hook(...args());while(effects.length)effects.shift()();}render();
   return {get state(){return value;},entries,location,events,timers,load,requests,storage,rerender:render,
     async flush(){for(let i=0;i<8;i++)await Promise.resolve();},
+    async until(predicate){for(let i=0;i<100;i++){if(predicate(value))return;await Promise.resolve();}assert.fail("Hook did not settle to the expected state");},
     traverse(offset){index+=offset;assert.ok(index>=0&&index<entries.length);locate();events.get("popstate")?.({state:history.state});},
     tick(ms,run=true){now+=ms;if(run)for(const [id,timer]of [...timers])if(timer.at<=now&&timers.delete(id))timer.fn();},
     unmount(){alive=false;for(const cell of cells)cell?.cleanup?.();},
@@ -78,17 +79,17 @@ test("an event URL opens directly and malformed history payload cannot inject me
 });
 
 test("automatic connection uses a scoped session without a jury key or manual settings",async()=>{
-  const h=harness("@/hooks/use-api-connection","useApiConnection");await h.flush();
+  const h=harness("@/hooks/use-api-connection","useApiConnection");await h.until(s=>s.connection.state==="connected");
   assert.equal(h.state.connection.state,"connected");assert.equal(h.state.api.browser,true);
   assert.equal(h.state.api.apiKey,"scoped-test-session");assert.equal(h.requests.length,2);
   const config=h.state.api;
   h.state.report({...config,apiKey:"wrong"},{kind:"failure",error:new Error("unrelated")});await h.flush();
   assert.equal(h.state.connection.state,"connected");
-  h.state.retry();await h.flush();assert.equal(h.requests.length,3);
+  h.state.retry();await h.until(s=>s.connection.state==="connected"&&h.requests.length===3);assert.equal(h.requests.length,3);
   assert.equal(h.state.api.apiKey,config.apiKey);h.unmount();
 });
 test("transport, authentication, protocol and model failures have distinct connection meanings",async()=>{
-  const h=harness("@/hooks/use-api-connection","useApiConnection");await h.flush();const config=h.state.api;
+  const h=harness("@/hooks/use-api-connection","useApiConnection");await h.until(s=>s.connection.state==="connected");const config=h.state.api;
   const {AnalysisError}=h.load("@/lib/analysis");
   for(const [error,state]of [[new AnalysisError("offline","network",true),"unavailable"],[new AnalysisError("denied","http",false,401),"rejected"],[new AnalysisError("bad JSON","invalid_response"),"error"]]){
     h.state.report(config,{kind:"failure",error});await h.flush();assert.equal(h.state.connection.state,state);

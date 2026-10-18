@@ -1009,6 +1009,9 @@ export const workspaceMessages = {
   "Ожидание восстановлено после перезагрузки. Продолжите проверку.": {
     "kk": "Күту қайта жүктеуден кейін қалпына келтірілді. Тексеруді жалғастырыңыз.",
     "en": "Waiting restored after reload. Resume the check."
-  }
-
+  },
+  "Цитата из источника": {"kk": "Дереккөзден дәйексөз", "en": "Source quotation"},
+  "Цитата не передана в этом результате.": {"kk": "Бұл нәтижеде дәйексөз берілмеген.", "en": "No quotation was included in this result."},
+  "Связанные положения и исключения": {"kk": "Байланысты ережелер мен ерекшеліктер", "en": "Related provisions and exceptions"},
+  "Общий контекст: конкретный пункт не выбран.": {"kk": "Жалпы контекст: нақты тармақ таңдалмаған.", "en": "General context: no specific clause was selected."}
 } satisfies Messages;

@@ -1,0 +1,61 @@
+{
+  "model": "JEPA-LGBM-FULL",
+  "manifest_sha256": "42878d263313590eeadcaf9fcdba0e30c5c50f163a614179a4012730e4ee3cb0",
+  "training_videos_verified": 40,
+  "class_counts": {
+    "negative": 19,
+    "positive": 21
+  },
+  "training_points_verified": 22,
+  "classification_pca": false,
+  "both_preprocessors_refitted_on_40": true,
+  "independent_fresh_full_head_refits_match": true,
+  "all_120_feature_hashes_and_fingerprints_verified": true,
+  "localizer_positive_parents": 21,
+  "encoder_unchanged": true,
+  "package_environment_check": {
+    "status": "ok",
+    "model": "JEPA-LGBM-FULL",
+    "verified_files": 62,
+    "device": "cuda",
+    "gpu": "NVIDIA L40S",
+    "torch": "2.9.1+cu126",
+    "sklearn": "1.7.2",
+    "lightgbm": "4.6.0",
+    "package": "/tmp/jepa-lgbm-portable-xphfgxjz/JEPA-LGBM-FULL"
+  },
+  "relocated_standalone_imports_verified": true,
+  "gpu_smoke_runs": [
+    {
+      "id": "v028",
+      "label": 1,
+      "score": 0.9338450201194941,
+      "timecode": "00:00:10.347",
+      "inference_sec": 7.138776601997961,
+      "peak_vram_gb": 3.0527706146240234,
+      "cached_score_difference": 0.0,
+      "localizer_encoded": true
+    },
+    {
+      "id": "v008",
+      "label": 0,
+      "score": 0.054282675761297326,
+      "timecode": null,
+      "inference_sec": 3.5428151989981416,
+      "peak_vram_gb": 3.0527706146240234,
+      "cached_score_difference": 0.0,
+      "localizer_encoded": false
+    }
+  ],
+  "persistent_gpu_worker_wall_sec": 14.28952382299758,
+  "positive_cli_wall_sec": 10.852400659001432,
+  "persistent_api_reuse_and_negative_skip_verified": true,
+  "cli_output_file_parity": true,
+  "negative_gate_without_localizer_verified": true,
+  "flat_positive_no_invented_point": true,
+  "invalid_input_fails": true,
+  "smoke_videos_are_training_data": true,
+  "independent_test_metrics": null,
+  "new_cpu_video_inference_runs": 0,
+  "cpu_tests_disabled_at_user_request": true
+}

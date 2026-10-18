@@ -1,6 +1,7 @@
 """Synthetic transport tests, not a model-quality evaluation."""
 import copy
 from backend.legal import assess, publishable_assessments
+from backend.legal import publishable_review_findings
 
 
 def test_only_public_analyze_is_called_and_result_is_unmodified():
@@ -25,3 +26,15 @@ def test_publication_requires_both_original_decision_and_explicit_gate():
         {'decision': 'insufficient', 'publishable': {'allowed': True}},
         {'decision': 'violation_supported'}]
     assert publishable_assessments({'assessments': rows}) == [allowed]
+
+
+def test_review_contract_does_not_promote_arbitrary_insufficient_assessments():
+    row = {'schema': 'legal_rag.review.v1', 'finding_kind': 'possible_indication',
+        'decision': 'insufficient', 'source_relation': 'candidate_clause',
+        'evidence': [{'fact_id': 'f1'}], 'human_review_required': True,
+        'publishable': {'allowed': True, 'policy': 'possible_indications'}}
+    assert publishable_review_findings({'schema': 'legal_rag.review.v1', 'review_findings': [row]}) == [row]
+    assert publishable_assessments({'assessments': [row]}) == []
+    assert publishable_review_findings({'review_findings': [row]}) == []
+    wrong = dict(row, publishable={'allowed': True, 'policy': 'reviewed_only'})
+    assert publishable_review_findings({'schema': 'legal_rag.review.v1', 'review_findings': [wrong]}) == []

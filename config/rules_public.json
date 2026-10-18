@@ -9,7 +9,9 @@
       ],
       "human_reviewed": false,
       "production_active": false,
-      "review_status": "draft_requires_human_review"
+      "review_status": "draft_requires_human_review",
+      "assisted_policy_enabled": true,
+      "review_indications_enabled": true
     },
     {
       "id": "R231-20A",
@@ -19,7 +21,9 @@
       ],
       "human_reviewed": false,
       "production_active": false,
-      "review_status": "draft_requires_human_review"
+      "review_status": "draft_requires_human_review",
+      "assisted_policy_enabled": true,
+      "review_indications_enabled": true
     },
     {
       "id": "R231-20B",
@@ -29,7 +33,9 @@
       ],
       "human_reviewed": false,
       "production_active": false,
-      "review_status": "draft_requires_human_review"
+      "review_status": "draft_requires_human_review",
+      "assisted_policy_enabled": true,
+      "review_indications_enabled": true
     },
     {
       "id": "R231-22",
@@ -39,7 +45,9 @@
       ],
       "human_reviewed": false,
       "production_active": false,
-      "review_status": "draft_requires_human_review"
+      "review_status": "draft_requires_human_review",
+      "assisted_policy_enabled": true,
+      "review_indications_enabled": true
     },
     {
       "id": "R231-25",
@@ -49,7 +57,9 @@
       ],
       "human_reviewed": false,
       "production_active": false,
-      "review_status": "draft_requires_human_review"
+      "review_status": "draft_requires_human_review",
+      "assisted_policy_enabled": true,
+      "review_indications_enabled": true
     },
     {
       "id": "R231-31.4",
@@ -59,7 +69,9 @@
       ],
       "human_reviewed": false,
       "production_active": false,
-      "review_status": "draft_requires_human_review"
+      "review_status": "draft_requires_human_review",
+      "assisted_policy_enabled": true,
+      "review_indications_enabled": true
     },
     {
       "id": "R231-32",
@@ -69,7 +81,9 @@
       ],
       "human_reviewed": false,
       "production_active": false,
-      "review_status": "draft_requires_human_review"
+      "review_status": "draft_requires_human_review",
+      "assisted_policy_enabled": true,
+      "review_indications_enabled": true
     },
     {
       "id": "R231-42",
@@ -79,7 +93,17 @@
       ],
       "human_reviewed": false,
       "production_active": false,
-      "review_status": "draft_requires_human_review"
+      "review_status": "draft_requires_human_review",
+      "assisted_policy_enabled": true,
+      "review_indications_enabled": true
     }
-  ]
+  ],
+  "publication_policy": "possible_indications",
+  "human_review_required": true,
+  "formal_assessment_policy": "evidence_assisted",
+  "negative_classifier_early_exit": true,
+  "source_relations": {
+    "candidate_clause": "Possible connection to a clause; unknown conditions stay explicit.",
+    "context_only": "Document context only; no broken clause is established."
+  }
 }

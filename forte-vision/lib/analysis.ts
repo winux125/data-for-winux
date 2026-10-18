@@ -9,10 +9,18 @@ export const VERDICT_LABELS: Record<Verdict, string> = {
 };
 export type JobStatus = "processing" | "done" | "failed";
 
-export interface RuleReference {
+export interface RuleCitation {
   title: string;
   section?: string;
   url?: string;
+  quote?: string;
+  path?: string[];
+}
+
+export interface RuleReference extends RuleCitation {
+  unit_id?: string;
+  source_relation?: "candidate_clause" | "context_only";
+  context?: RuleCitation[];
 }
 
 export interface EvidenceFrame {
@@ -106,10 +114,34 @@ export function formatTime(seconds: number): string {
     : `${String(minutes).padStart(2, "0")}:${rest}`;
 }
 
-function parseRule(value: unknown): RuleReference | undefined {
+function parseRule(value: unknown, allowContext = true): RuleReference | undefined {
   if (value === undefined || value === null) return undefined;
   if (!object(value) || !nonEmptyString(value.title)) throw malformed("не заполнен нормативный источник");
   const rule: RuleReference = { title: value.title };
+  if (value.quote !== undefined) {
+    if (!nonEmptyString(value.quote)) throw malformed("некорректная цитата нормативного источника");
+    rule.quote = value.quote;
+  }
+  if (value.path !== undefined) {
+    if (!Array.isArray(value.path) || !value.path.every(nonEmptyString)) throw malformed("некорректная структура нормативного источника");
+    rule.path = value.path;
+  }
+  if (value.unit_id !== undefined) {
+    if (!nonEmptyString(value.unit_id)) throw malformed("некорректный идентификатор пункта");
+    rule.unit_id = value.unit_id;
+  }
+  if (value.source_relation !== undefined) {
+    if (value.source_relation !== "candidate_clause" && value.source_relation !== "context_only") throw malformed("некорректная связь с источником");
+    rule.source_relation = value.source_relation;
+  }
+  if (allowContext && value.context !== undefined) {
+    if (!Array.isArray(value.context)) throw malformed("некорректные связанные положения");
+    rule.context = value.context.map(item => {
+      const citation = parseRule(item, false);
+      if (!citation) throw malformed("не заполнено связанное положение");
+      return citation;
+    });
+  }
   if (value.section !== undefined) {
     if (!nonEmptyString(value.section)) throw malformed("некорректный пункт нормативного источника");
     rule.section = value.section;

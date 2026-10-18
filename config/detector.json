@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "package_dir": "model_packages/jepa_lgbm",
+  "model_id": "JEPA-LGBM-FULL",
+  "device": "cuda",
+  "threads": 8
+}

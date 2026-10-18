@@ -273,6 +273,11 @@ html, body, * { scrollbar-color: transparent transparent; scrollbar-width: thin;
 .fv-rule-details > p { color: #7d6171; font-size: 13px; line-height: 1.8; }
 .fv-rule-details a { display: inline-flex; align-items: center; gap: 6px; min-height: 36px; margin-top: 4px; color: var(--forte); font-size: 13px; }
 .fv-rule-details a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.fv-rule-quotation { width: 100%; min-width: 0; }
+.fv-rule-quotation blockquote { margin: 8px 0 0; padding: 10px 14px; border-inline-start: 3px solid var(--forte); white-space: pre-wrap; overflow-wrap: anywhere; font-size: 13px; line-height: 1.8; }
+.fv-rule-context { width: 100%; }
+.fv-rule-context summary { cursor: pointer; font-size: 13px; padding: 8px 0; }
+.fv-rule-context .fv-rule-quotation { margin-block: 12px; }
 
 /* Result inspector */
 .fv-result-heading { padding-bottom: 24px; }

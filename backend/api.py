@@ -8,11 +8,13 @@ from pathlib import Path
 
 from fastapi import Depends, FastAPI, File, Header, HTTPException, UploadFile, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.responses import JSONResponse
 
 from . import store
 from .settings import MAX_BYTES, MIN_FREE_BYTES, ROOT, UPLOADS, api_key
 from .browser import browser_client, check_origin, issue_session
+from .contracts import Submission, JobResponse
 
 
 @asynccontextmanager
@@ -23,6 +25,7 @@ async def lifespan(app):
 
 
 app = FastAPI(title='Forte Video Audit API', version='1.0.0', lifespan=lifespan)
+app.add_middleware(GZipMiddleware, minimum_size=1000, compresslevel=5)
 origins = [x.strip() for x in os.environ.get('FORTE_CORS_ORIGINS', '').split(',') if x.strip()]
 if origins:
     app.add_middleware(CORSMiddleware, allow_origins=origins, allow_methods=['GET', 'POST'],
@@ -57,7 +60,7 @@ def ready():
     return JSONResponse({'status': 'ready' if value else 'loading'}, status_code=200 if value else 503)
 
 
-@app.post('/api/v1/analyze', dependencies=[Depends(authorized)], status_code=202)
+@app.post('/api/v1/analyze', dependencies=[Depends(authorized)], status_code=202, response_model=Submission)
 async def analyze(file: UploadFile = File(...)):
     return await enqueue(file)
 
@@ -89,7 +92,8 @@ async def enqueue(file, client_id=None):
     return {'job_id': job_id, 'status': 'processing'}
 
 
-@app.get('/api/v1/jobs/{job_id}', dependencies=[Depends(authorized)])
+@app.get('/api/v1/jobs/{job_id}', dependencies=[Depends(authorized)], response_model=JobResponse,
+         response_model_exclude_none=True)
 def job(job_id: str):
     row = store.get(job_id)
     if not row:
@@ -119,12 +123,12 @@ def browser_session():
     return issue_session()
 
 
-@app.post('/api/browser/analyze', status_code=202)
+@app.post('/api/browser/analyze', status_code=202, response_model=Submission)
 async def browser_analyze(client_id: str = Depends(browser_client), file: UploadFile = File(...)):
     return await enqueue(file, client_id)
 
 
-@app.get('/api/browser/jobs/{job_id}')
+@app.get('/api/browser/jobs/{job_id}', response_model=JobResponse, response_model_exclude_none=True)
 def browser_job(job_id: str, client_id: str = Depends(browser_client)):
     row = store.get(job_id)
     if not row or row['client_id'] != client_id:
