@@ -5,7 +5,7 @@ cd "$ROOT"
 : "${FORTE_PUBLIC_HOST:?Set FORTE_PUBLIC_HOST to this servers DNS hostname (without https://)}"
 export HF_HOME="${HF_HOME:-$ROOT/models/hf-cache}"
 .venv/bin/python scripts/verify_runtime.py --models --cuda
-mkdir -p secrets data
+mkdir -p secrets data/logs
 chmod 700 secrets data
 if [ ! -f secrets/service.env ]; then
     (umask 077; .venv/bin/python -c 'import secrets; print("FORTE_API_KEY="+secrets.token_urlsafe(36))' > secrets/service.env)

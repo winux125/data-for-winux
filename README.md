@@ -2,7 +2,7 @@
 
 Сервис проверки видеозаписей кассовых операций · Datathon 26, ForteBank.
 
-[Сайт](https://forte26.vercel.app/app) · [API](https://154.54.100.194.sslip.io/docs) · [Развёртывание](docs/DEPLOYMENT.md) · [RAG и Qwen](docs/LEGAL_RAG_QWEN_README.md)
+[Сайт](https://forte26.vercel.app/app) · [API](https://forte26.vercel.app/docs) · [Развёртывание](docs/DEPLOYMENT.md) · [RAG и Qwen](docs/LEGAL_RAG_QWEN_README.md)
 
 ## Рабочая схема
 
@@ -60,7 +60,7 @@ Bootstrap предназначен для новой установки. На с
 ## API жюри
 
 ```bash
-export FORTE_API_URL=https://154.54.100.194.sslip.io
+export FORTE_API_URL=https://forte26.vercel.app
 # FORTE_API_KEY задаётся владельцем отдельно.
 curl -X POST "$FORTE_API_URL/api/v1/analyze" \
   -H "X-API-Key: $FORTE_API_KEY" -F "file=@video.mov"
@@ -68,6 +68,8 @@ curl "$FORTE_API_URL/api/v1/jobs/JOB_ID" -H "X-API-Key: $FORTE_API_KEY"
 ```
 
 POST возвращает HTTP 202, `job_id`, `status=processing`. GET — `processing`, `done` или `failed`. При `done`: `verdict=violation|no_violation` и список `violations`. Каждое событие содержит `type`, `timecode_sec`, `description`, 1–3 исходных JPEG/base64 и полный нормативный источник в `rule`; ссылка также включена в обязательное описание. Ошибка обработки не подменяется чистым вердиктом.
+
+Для сабмита используется `https://forte26.vercel.app`: существующий Vercel rewrite передаёт HTTP на ту же NVIDIA VM; модели остаются локальными. Прямой адрес VM `https://154.54.100.194.sslip.io` сохранён как резервный с теми же путями и ключом. После тайм-аутов прямого соединения проверен полный положительный прогон через Vercel: POST 202 за 5,6 с, конечный результат за 61 с, три события и шесть валидных JPEG. Отдельно проверена передача синтетического файла 30 МиБ. Это ограниченные проверки доступности, не гарантия отсутствия будущих сетевых сбоев или поддержки через прокси предельных 10 ГиБ.
 
 Сайт подключается к API автоматически через ограниченную браузерную сессию. Ключ жюри не передаётся в код frontend. При размещении отдельно задайте `FORTE_SITE_ORIGIN`; Vercel rewrite находится в `deploy/vercel/`.
 
