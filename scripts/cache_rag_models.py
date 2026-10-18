@@ -1,10 +1,10 @@
-"""Cache exact public models from the unmodified RAG config before offline startup."""
+"""Cache the exact models selected by the service before offline startup."""
 import json
 from pathlib import Path
 from huggingface_hub import snapshot_download, hf_hub_download
 
 root = Path(__file__).resolve().parents[1]
-config = json.loads((root/'ForteBank-Legal-RAG-2026-10-18/configs/cuda.json').read_text())
+config = json.loads((root/'config/rag-mvp.json').read_text(encoding='utf-8'))
 for key in ('embedder', 'generator'):
     model = config[key]
     snapshot_download(model['model_id'], revision=model['revision'],

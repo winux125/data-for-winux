@@ -1,0 +1,741 @@
+{
+  "schema_version": 1,
+  "status": "draft_cards_require_human_legal_review",
+  "note": "Drafted from the exact text of Rules No. 231 in the verified snapshot. Questions ask only for visible facts; the code decides. No card is production_active until a named human reviews text and logic.",
+  "predicate_vocabulary": {
+    "canonical": [
+      "bag_damage",
+      "bag_opened",
+      "cash_counting",
+      "cash_in_lockable_storage",
+      "cash_issue",
+      "cash_packaging",
+      "cash_receipt",
+      "cash_sorting",
+      "cash_unattended",
+      "cashier_at_workplace",
+      "collection_bag",
+      "collector_present",
+      "controller_present",
+      "count_before_issue",
+      "customer_present",
+      "issue_interval_fully_visible",
+      "issued_in_intact_bank_packaging",
+      "item_belongs_to_employee",
+      "item_inside_cash_unit",
+      "item_is_allowed_category",
+      "left_workplace",
+      "packaging_incomplete_or_damaged",
+      "personal_items",
+      "phone_in_hands",
+      "service_end",
+      "service_in_progress",
+      "sheet_count_before_issue",
+      "previously_received_cash"
+    ],
+    "note": "Predicates the external visual module must use in ObservationBundle facts. A fact states a proposition; its truth is only its status (confirmed / refuted / unknown)."
+  },
+  "cards": [
+    {
+      "rule_id": "R231-12",
+      "type_label_ru": "Хранение личных вещей работника в кассовом узле",
+      "kind": "state",
+      "clause_ids": [
+        "V1900019680:12"
+      ],
+      "related_clause_ids": [
+        "V1900019680:5"
+      ],
+      "pinned_text_sha256": {
+        "V1900019680:12": "f3dbb40ee01ae57a7f069a32c123d5da48d7dc5f909947f522383fa465577419"
+      },
+      "conditions": [
+        {
+          "id": "item_of_employee",
+          "tier": "context",
+          "question_ru": "Предмет принадлежит или используется работником банка на рабочем месте, а не клиентом?"
+        },
+        {
+          "id": "inside_cash_unit",
+          "tier": "core",
+          "question_ru": "Предмет находится внутри кассового узла (на рабочем месте кассира за ограждением), а не в зоне клиента?"
+        },
+        {
+          "id": "personal_item_visible",
+          "tier": "core",
+          "question_ru": "Видны личные вещи, личные наличные деньги или ценности работника (сумка, кошелёк, рюкзак, телефон и т.п.)?"
+        }
+      ],
+      "exceptions": [
+        {
+          "id": "allowed_item",
+          "source_clause_id": "V1900019680:12",
+          "question_ru": "Предмет является лекарственным средством, медицинским изделием или средством связи без функции фото- и видеофиксации?"
+        }
+      ],
+      "non_visual": [
+        "Принадлежность предмета работнику и порядок хранения по внутренним документам банка"
+      ],
+      "trigger_predicates": [
+        "personal_items",
+        "phone_in_hands"
+      ],
+      "anchor_policy": "state_first_visible",
+      "review": {
+        "text_verified_by": null,
+        "logic_reviewed_by": null,
+        "reviewed_at": null,
+        "human_reviewed": false,
+        "production_active": false
+      },
+      "condition_map": {
+        "item_of_employee": {
+          "all": [
+            {
+              "predicate": "item_belongs_to_employee",
+              "polarity": "positive"
+            }
+          ],
+          "facet": "scope"
+        },
+        "inside_cash_unit": {
+          "all": [
+            {
+              "predicate": "item_inside_cash_unit",
+              "polarity": "positive"
+            }
+          ],
+          "facet": "scope"
+        },
+        "personal_item_visible": {
+          "any": [
+            {
+              "predicate": "personal_items",
+              "polarity": "positive"
+            },
+            {
+              "predicate": "phone_in_hands",
+              "polarity": "positive"
+            }
+          ],
+          "facet": "breach"
+        },
+        "allowed_item": {
+          "all": [
+            {
+              "predicate": "item_is_allowed_category",
+              "polarity": "positive"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "rule_id": "R231-20A",
+      "type_label_ru": "Приём и пересчёт наличных денег не в присутствии клиента",
+      "kind": "commission",
+      "clause_ids": [
+        "V1900019680:20"
+      ],
+      "related_clause_ids": [
+        "V1900019680:19",
+        "V1900019680:17"
+      ],
+      "pinned_text_sha256": {
+        "V1900019680:20": "a242ccb9ca446269034fc5d24536294ad0665dfaa4c16ae4476739e902567159"
+      },
+      "conditions": [
+        {
+          "id": "actor_is_cashier",
+          "tier": "context",
+          "question_ru": "Операцию выполняет работник, выполняющий функции кассира на этом рабочем месте?"
+        },
+        {
+          "id": "receipt_from_client",
+          "tier": "core",
+          "question_ru": "Это приём наличных денег от клиента (взнос), а не выдача, внутренний пересчёт или сдача заведующему кассой?"
+        },
+        {
+          "id": "receive_or_count",
+          "tier": "core",
+          "question_ru": "Кассовый работник принимает или пересчитывает эти деньги в показанном интервале?"
+        },
+        {
+          "id": "client_absent",
+          "tier": "core",
+          "question_ru": "Клиент отсутствует у кассы во время приёма или пересчёта? Ответ true только если зона, где стоит клиент, видна и пуста."
+        }
+      ],
+      "exceptions": [],
+      "non_visual": [],
+      "trigger_predicates": [
+        "cash_receipt",
+        "cash_counting"
+      ],
+      "anchor_policy": "onset",
+      "review": {
+        "text_verified_by": null,
+        "logic_reviewed_by": null,
+        "reviewed_at": null,
+        "human_reviewed": false,
+        "production_active": false
+      },
+      "condition_map": {
+        "actor_is_cashier": {
+          "role": "cashier",
+          "facet": "scope"
+        },
+        "receipt_from_client": {
+          "all": [
+            {
+              "predicate": "cash_receipt",
+              "polarity": "positive"
+            }
+          ],
+          "facet": "scope"
+        },
+        "receive_or_count": {
+          "any": [
+            {
+              "predicate": "cash_receipt",
+              "polarity": "positive"
+            },
+            {
+              "predicate": "cash_counting",
+              "polarity": "positive"
+            }
+          ],
+          "facet": "scope"
+        },
+        "client_absent": {
+          "all": [
+            {
+              "predicate": "customer_present",
+              "polarity": "negative"
+            }
+          ],
+          "facet": "breach"
+        }
+      }
+    },
+    {
+      "rule_id": "R231-20B",
+      "type_label_ru": "Ранее принятые наличные деньги не убраны в закрывающееся устройство",
+      "kind": "state",
+      "clause_ids": [
+        "V1900019680:20"
+      ],
+      "related_clause_ids": [],
+      "pinned_text_sha256": {
+        "V1900019680:20": "a242ccb9ca446269034fc5d24536294ad0665dfaa4c16ae4476739e902567159"
+      },
+      "conditions": [
+        {
+          "id": "actor_is_cashier",
+          "tier": "context",
+          "question_ru": "Это рабочее место кассового работника?"
+        },
+        {
+          "id": "other_cash_on_desk",
+          "tier": "core",
+          "question_ru": "На рабочем месте открыто лежат наличные деньги, не относящиеся к текущей операции с клиентом?"
+        },
+        {
+          "id": "outside_lockable_storage",
+          "tier": "core",
+          "question_ru": "Эти деньги находятся вне сейфа, металлического шкафа, тележки, ящика стола или тумбы?"
+        }
+      ],
+      "exceptions": [],
+      "non_visual": [
+        "Закрыто ли устройство на ключ",
+        "Принадлежность денег конкретному клиенту"
+      ],
+      "trigger_predicates": [
+        "cash_unattended",
+        "previously_received_cash"
+      ],
+      "anchor_policy": "state_first_visible",
+      "review": {
+        "text_verified_by": null,
+        "logic_reviewed_by": null,
+        "reviewed_at": null,
+        "human_reviewed": false,
+        "production_active": false
+      },
+      "condition_map": {
+        "actor_is_cashier": {
+          "role": "cashier",
+          "facet": "scope"
+        },
+        "other_cash_on_desk": {
+          "all": [
+            {
+              "predicate": "previously_received_cash",
+              "polarity": "positive"
+            }
+          ],
+          "facet": "scope"
+        },
+        "outside_lockable_storage": {
+          "all": [
+            {
+              "predicate": "cash_in_lockable_storage",
+              "polarity": "negative"
+            }
+          ],
+          "facet": "breach"
+        }
+      }
+    },
+    {
+      "rule_id": "R231-22",
+      "type_label_ru": "Уход кассового работника с рабочего места до окончания обслуживания клиента",
+      "kind": "commission",
+      "clause_ids": [
+        "V1900019680:22"
+      ],
+      "related_clause_ids": [],
+      "pinned_text_sha256": {
+        "V1900019680:22": "2274bc68ee6ab476de1883d0f8502a6399fb2505737795047586b0cf26afb498"
+      },
+      "conditions": [
+        {
+          "id": "actor_is_cashier",
+          "tier": "context",
+          "question_ru": "Уходит именно работник, выполняющий функции кассира на этом рабочем месте?"
+        },
+        {
+          "id": "left_workplace",
+          "tier": "core",
+          "question_ru": "Работник покинул рабочее место (ушёл из зоны рабочего места), а не наклонился, повернулся или ненадолго вышел из узкого кадра?"
+        },
+        {
+          "id": "service_in_progress",
+          "tier": "core",
+          "question_ru": "В момент ухода обслуживание этого клиента ещё не окончено: клиент у кассы, деньги или документы ещё не переданы?"
+        }
+      ],
+      "exceptions": [],
+      "non_visual": [
+        "Причина ухода и распоряжения руководства не устанавливаются по видео"
+      ],
+      "trigger_predicates": [
+        "left_workplace"
+      ],
+      "anchor_policy": "onset",
+      "review": {
+        "text_verified_by": null,
+        "logic_reviewed_by": null,
+        "reviewed_at": null,
+        "human_reviewed": false,
+        "production_active": false
+      },
+      "condition_map": {
+        "actor_is_cashier": {
+          "role": "cashier",
+          "facet": "scope"
+        },
+        "left_workplace": {
+          "all": [
+            {
+              "predicate": "left_workplace",
+              "polarity": "positive"
+            }
+          ],
+          "facet": "breach"
+        },
+        "service_in_progress": {
+          "all": [
+            {
+              "predicate": "service_in_progress",
+              "polarity": "positive"
+            }
+          ],
+          "facet": "scope"
+        }
+      }
+    },
+    {
+      "rule_id": "R231-25",
+      "type_label_ru": "Вскрытие повреждённой инкассаторской сумки без работника инкассации",
+      "kind": "commission",
+      "clause_ids": [
+        "V1900019680:25"
+      ],
+      "related_clause_ids": [
+        "V1900019680:24"
+      ],
+      "pinned_text_sha256": {
+        "V1900019680:25": "49d3195d5999e83c7280c37d29616c732fcd96162d5edd2b9eb335d492186be6"
+      },
+      "conditions": [
+        {
+          "id": "actor_is_cashier",
+          "tier": "context",
+          "question_ru": "Сумку обрабатывает кассовый работник банка?"
+        },
+        {
+          "id": "collection_bag",
+          "tier": "core",
+          "question_ru": "Это сумка (мешок, кейс, контейнер), принятая от подразделения инкассации, а не личная сумка?"
+        },
+        {
+          "id": "integrity_broken",
+          "tier": "core",
+          "question_ru": "Видно нарушение целостности именно этой сумки (разрыв, вскрытие, повреждённая пломба)?"
+        },
+        {
+          "id": "opened_without_collector",
+          "tier": "core",
+          "question_ru": "Сумку вскрывают или пересчитывают её содержимое в отсутствие работника подразделения инкассации?"
+        }
+      ],
+      "exceptions": [],
+      "non_visual": [
+        "Составление акта о результатах пересчёта"
+      ],
+      "trigger_predicates": [
+        "collection_bag",
+        "bag_damage"
+      ],
+      "anchor_policy": "onset",
+      "review": {
+        "text_verified_by": null,
+        "logic_reviewed_by": null,
+        "reviewed_at": null,
+        "human_reviewed": false,
+        "production_active": false
+      },
+      "condition_map": {
+        "actor_is_cashier": {
+          "role": "cashier",
+          "facet": "scope"
+        },
+        "collection_bag": {
+          "all": [
+            {
+              "predicate": "collection_bag",
+              "polarity": "positive"
+            }
+          ],
+          "facet": "scope"
+        },
+        "integrity_broken": {
+          "all": [
+            {
+              "predicate": "bag_damage",
+              "polarity": "positive"
+            }
+          ],
+          "facet": "scope"
+        },
+        "opened_without_collector": {
+          "all": [
+            {
+              "predicate": "bag_opened",
+              "polarity": "positive"
+            },
+            {
+              "predicate": "collector_present",
+              "polarity": "negative"
+            }
+          ],
+          "facet": "breach"
+        }
+      }
+    },
+    {
+      "rule_id": "R231-31.4",
+      "type_label_ru": "Выдача наличных денег клиенту без пересчёта в его присутствии",
+      "kind": "omission",
+      "clause_ids": [
+        "V1900019680:31"
+      ],
+      "related_clause_ids": [
+        "V1900019680:32",
+        "V1900019680:35"
+      ],
+      "pinned_text_sha256": {
+        "V1900019680:31": "b8b71104f4f9f0b9b00b55844f469c57dea5f2c9d64e71e517c6a5a913d3e4a6"
+      },
+      "conditions": [
+        {
+          "id": "actor_is_cashier",
+          "tier": "context",
+          "question_ru": "Деньги выдаёт кассовый работник?"
+        },
+        {
+          "id": "issue_to_client",
+          "tier": "core",
+          "question_ru": "Происходит выдача наличных денег клиенту?"
+        },
+        {
+          "id": "issue_interval_visible",
+          "tier": "core",
+          "question_ru": "Весь интервал от подготовки суммы до передачи клиенту виден без перекрытий и пропусков?"
+        },
+        {
+          "id": "no_count_before_handover",
+          "tier": "core",
+          "question_ru": "Подготовленные к выдаче деньги не пересчитывались в присутствии клиента до передачи?"
+        }
+      ],
+      "exceptions": [
+        {
+          "id": "intact_packaging",
+          "source_clause_id": "V1900019680:32",
+          "question_ru": "Выдаются полные или неполные пачки, отдельные корешки по суммам на неповреждённой упаковке, либо монеты по надписям на мешках и пакетах?"
+        }
+      ],
+      "non_visual": [],
+      "trigger_predicates": [
+        "cash_issue"
+      ],
+      "anchor_policy": "handover_moment",
+      "review": {
+        "text_verified_by": null,
+        "logic_reviewed_by": null,
+        "reviewed_at": null,
+        "human_reviewed": false,
+        "production_active": false
+      },
+      "condition_map": {
+        "actor_is_cashier": {
+          "role": "cashier",
+          "facet": "scope"
+        },
+        "issue_to_client": {
+          "all": [
+            {
+              "predicate": "cash_issue",
+              "polarity": "positive"
+            }
+          ],
+          "facet": "scope"
+        },
+        "issue_interval_visible": {
+          "all": [
+            {
+              "predicate": "issue_interval_fully_visible",
+              "polarity": "positive"
+            }
+          ],
+          "facet": "evidence"
+        },
+        "no_count_before_handover": {
+          "all": [
+            {
+              "predicate": "count_before_issue",
+              "polarity": "negative"
+            }
+          ],
+          "facet": "breach"
+        },
+        "intact_packaging": {
+          "all": [
+            {
+              "predicate": "issued_in_intact_bank_packaging",
+              "polarity": "positive"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "rule_id": "R231-32",
+      "type_label_ru": "Выдача банкнот из неполных или повреждённых корешков без полистного пересчёта",
+      "kind": "omission",
+      "clause_ids": [
+        "V1900019680:32"
+      ],
+      "related_clause_ids": [
+        "V1900019680:31"
+      ],
+      "pinned_text_sha256": {
+        "V1900019680:32": "34eaabd0dc4b7f6a37a5b5275b274829cbef28ba4972f319dc95ec7f9e75fb56"
+      },
+      "conditions": [
+        {
+          "id": "actor_is_cashier",
+          "tier": "context",
+          "question_ru": "Деньги выдаёт кассовый работник?"
+        },
+        {
+          "id": "issue_to_client",
+          "tier": "core",
+          "question_ru": "Происходит выдача наличных денег клиенту?"
+        },
+        {
+          "id": "incomplete_or_damaged",
+          "tier": "core",
+          "question_ru": "Выдаваемые банкноты взяты из неполного корешка или упаковка корешка повреждена?"
+        },
+        {
+          "id": "no_sheet_count",
+          "tier": "core",
+          "question_ru": "На всём видимом интервале до передачи полистный пересчёт этих банкнот не выполнялся?"
+        },
+        {
+          "id": "issue_interval_visible",
+          "tier": "core",
+          "question_ru": "Весь интервал подготовки и выдачи виден без пропусков и перекрытий?"
+        }
+      ],
+      "exceptions": [],
+      "non_visual": [],
+      "trigger_predicates": [
+        "cash_issue",
+        "packaging_incomplete_or_damaged"
+      ],
+      "anchor_policy": "handover_moment",
+      "review": {
+        "text_verified_by": null,
+        "logic_reviewed_by": null,
+        "reviewed_at": null,
+        "human_reviewed": false,
+        "production_active": false
+      },
+      "condition_map": {
+        "actor_is_cashier": {
+          "role": "cashier",
+          "facet": "scope"
+        },
+        "issue_to_client": {
+          "all": [
+            {
+              "predicate": "cash_issue",
+              "polarity": "positive"
+            }
+          ],
+          "facet": "scope"
+        },
+        "incomplete_or_damaged": {
+          "all": [
+            {
+              "predicate": "packaging_incomplete_or_damaged",
+              "polarity": "positive"
+            }
+          ],
+          "facet": "scope"
+        },
+        "no_sheet_count": {
+          "all": [
+            {
+              "predicate": "sheet_count_before_issue",
+              "polarity": "negative"
+            }
+          ],
+          "facet": "breach"
+        },
+        "issue_interval_visible": {
+          "all": [
+            {
+              "predicate": "issue_interval_fully_visible",
+              "polarity": "positive"
+            }
+          ],
+          "facet": "evidence"
+        }
+      }
+    },
+    {
+      "rule_id": "R231-42",
+      "type_label_ru": "Пересчёт, сортировка или упаковка наличных денег без контролирующего работника",
+      "kind": "commission",
+      "clause_ids": [
+        "V1900019680:42"
+      ],
+      "related_clause_ids": [],
+      "pinned_text_sha256": {
+        "V1900019680:42": "579538c8125a242400d2047809c6e7e9511efd4114b3cc0b9cf5ea9f6a3bff19"
+      },
+      "conditions": [
+        {
+          "id": "actor_is_cashier",
+          "tier": "context",
+          "question_ru": "Операцию выполняет кассовый работник?"
+        },
+        {
+          "id": "cash_processing",
+          "tier": "core",
+          "question_ru": "Выполняется пересчёт, сортировка или упаковка наличных денег?"
+        },
+        {
+          "id": "controller_absent",
+          "tier": "core",
+          "question_ru": "При операции отсутствует контролирующий работник? Ответ true только если зона рабочего места видна и второго работника банка рядом нет."
+        }
+      ],
+      "exceptions": [
+        {
+          "id": "client_receipt_or_issue",
+          "source_clause_id": "V1900019680:42",
+          "question_ru": "Операция является приёмом наличных денег от клиента или выдачей наличных денег клиенту?"
+        }
+      ],
+      "non_visual": [
+        "Полномочия присутствующего второго работника как контролирующего"
+      ],
+      "trigger_predicates": [
+        "cash_counting",
+        "cash_sorting",
+        "cash_packaging"
+      ],
+      "anchor_policy": "onset",
+      "review": {
+        "text_verified_by": null,
+        "logic_reviewed_by": null,
+        "reviewed_at": null,
+        "human_reviewed": false,
+        "production_active": false
+      },
+      "condition_map": {
+        "actor_is_cashier": {
+          "role": "cashier",
+          "facet": "scope"
+        },
+        "cash_processing": {
+          "any": [
+            {
+              "predicate": "cash_counting",
+              "polarity": "positive"
+            },
+            {
+              "predicate": "cash_sorting",
+              "polarity": "positive"
+            },
+            {
+              "predicate": "cash_packaging",
+              "polarity": "positive"
+            }
+          ],
+          "facet": "scope"
+        },
+        "controller_absent": {
+          "all": [
+            {
+              "predicate": "controller_present",
+              "polarity": "negative"
+            }
+          ],
+          "facet": "breach"
+        },
+        "client_receipt_or_issue": {
+          "any": [
+            {
+              "predicate": "cash_receipt",
+              "polarity": "positive"
+            },
+            {
+              "predicate": "cash_issue",
+              "polarity": "positive"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "condition_map_status": "draft_mapping_requires_human_review",
+  "condition_map_note": "facet: scope = who/what situation the norm addresses (false -> not applicable); breach = the act or omission (false -> refuted); evidence = whether the video can establish the breach (false -> insufficient). Draft, requires human review."
+}

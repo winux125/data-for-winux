@@ -2,11 +2,11 @@
 Description=Caddy HTTPS for Forte
 After=network-online.target
 [Service]
-User=shadeform
+User=@SERVICE_USER@
 Environment=XDG_DATA_HOME=/var/lib/forte-caddy
 Environment=XDG_CONFIG_HOME=/var/lib/forte-caddy
 StateDirectory=forte-caddy
-ExecStart=/usr/local/bin/caddy run --config /home/shadeform/forte-service/deploy/Caddyfile --adapter caddyfile
+ExecStart=/usr/local/bin/caddy run --config @SERVICE_ROOT@/data/deploy/Caddyfile --adapter caddyfile
 Restart=always
 RestartSec=3
 AmbientCapabilities=CAP_NET_BIND_SERVICE

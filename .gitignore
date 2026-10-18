@@ -1,13 +1,12 @@
 .venv/
-models/
-data/
+/models/
+/data/
 secrets/
 __pycache__/
 .pytest_cache/
 *.zip
 *.mov
 *.xlsx
-JEPA-FULL/weights/
 model_packages/*/weights/
 *.log
 source.tar.gz
@@ -50,5 +49,8 @@ forte-vision/.wrangler/
 forte-vision/test-results/
 forte-vision/playwright-report/
 
-# Generated versioned runtime overlays
+# Retired/generated layouts must never become a runtime dependency again.
 /releases/
+/JEPA-FULL/
+/ForteBank-Legal-RAG-2026-10-18/
+/patches/

@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "jurisdiction": "KZ",
+  "selection": "Cash-desk and client-service requirements, their legal bases, amendments and explicit scope counterexamples; no video labels used",
+  "sources": [
+    {"source_id":"V1900019680","group":"cash_operations","role":"operational","scope":"Банки второго уровня, кассовые операции и инкассация","seed":true},
+    {"source_id":"V2000020075","group":"physical_security","role":"operational","scope":"Охрана и устройство банковских помещений; временные редакции требуют отдельной проверки","seed":true},
+    {"source_id":"V1700016120","group":"banknotes","role":"operational","scope":"Определение платежности банкнот и монет тенге","seed":true},
+    {"source_id":"V1200007926","group":"banknotes","role":"operational","scope":"Обмен изымаемых, изъятых и повреждённых банкнот и монет","seed":true},
+    {"source_id":"V1900018545","group":"currency_exchange","role":"operational","scope":"Обмен наличной иностранной валюты; проверять тип организации и операции","seed":true},
+    {"source_id":"V1900018512","group":"currency_exchange","role":"operational","scope":"Валютные операции и необходимые документы","title_contains":"валютных операций"},
+    {"source_id":"V1700015541","group":"client_service","role":"historical_reference","scope":"Прежние Правила №136; выбран официальный снимок с отметкой об утрате силы, для текущих требований см. V2600038748","title_contains":"банковских услуг","preferred_document_id":"c059e58e-8a6f-423b-9c80-5eed4ef797f0"},
+    {"source_id":"V2600038748","group":"client_service","role":"operational","scope":"Требования к условиям банковской деятельности 2026 года: обслуживание и раскрытие информации; проверять переходные сроки","title_contains":"условиям осуществления банковской деятельности"},
+    {"source_id":"V2600038336","group":"terminal_security","role":"operational","scope":"Информационная безопасность банков; для видео применимы только наблюдаемые требования, скрытые настройки не выводятся из кадра","title_contains":"информационной безопасности"},
+    {"source_id":"V1600014422","group":"accounts","role":"operational","scope":"Открытие, ведение и закрытие банковских счетов; документы и идентификация","title_contains":"банковских счетов"},
+    {"source_id":"V1600014419","group":"payments","role":"operational","scope":"Безналичные платежи и переводы; применимость зависит от вида операции","title_contains":"платежей"},
+    {"source_id":"V2400034348","group":"physical_security","role":"operational","scope":"Антитеррористическая защита расчётно-кассовых отделений; проверять категорию объекта","title_contains":"антитеррористической"},
+    {"source_id":"Z950002155_","group":"legal_basis","role":"background","scope":"Закон о Национальном Банке; правовая основа и полномочия","title_contains":"Национальном Банке"},
+    {"source_id":"Z2600000258","group":"legal_basis","role":"background","scope":"Банковский закон 2026 года; переходные положения и даты требуют проверки","title_contains":"банковской деятельности"},
+    {"source_id":"Z950002444_","group":"legal_history","role":"historical_reference","scope":"Предыдущий банковский закон; ссылки старых актов и переходные положения, не применять автоматически к текущему событию","title_contains":"банковской деятельности"},
+    {"source_id":"Z1800000167","group":"currency_exchange","role":"background","scope":"Закон о валютном регулировании и валютном контроле","title_contains":"валютном"},
+    {"source_id":"Z1600000011","group":"payments","role":"background","scope":"Закон о платежах и платёжных системах","title_contains":"платежах"},
+    {"source_id":"Z090000191_","group":"client_identification","role":"background","scope":"ПОД/ФТ: идентификация и проверка клиентов; отсутствие проверки нельзя установить только по отсутствию действия в кадре","title_contains":"легализации"},
+    {"source_id":"Z1300000094","group":"personal_data","role":"background","scope":"Персональные данные: контекст работы с документами, согласие и правовое основание обычно не наблюдаемы на видео","title_contains":"персональных данных"},
+    {"source_id":"U030001271_","group":"legal_basis","role":"background","scope":"Положение о Национальном Банке; правовая основа действующих подзаконных актов","title_contains":"Национального Банка"},
+    {"source_id":"V2400035552","group":"physical_security","role":"amendment","scope":"Изменения №88 к Правилам №14; источник формулировок и переходных условий","title_contains":"2020 года № 14"},
+    {"source_id":"V2000021287","group":"physical_security","role":"amendment","scope":"Изменения Правил №14; проверка истории и временных редакций","title_contains":"2020 года № 14"},
+    {"source_id":"V2000021299","group":"scope_counterexample","role":"reference_only","scope":"Кассовые операции самого Национального Банка; нельзя автоматически переносить требования на ForteBank","title_contains":"в Национальном Банке"}
+  ],
+  "pages": [
+    {"source_id":"NBK-news-15960","url":"https://nationalbank.kz/ru/news/informacionnye-soobshcheniya/15960","group":"banknotes","role":"guidance","scope":"Официальное разъяснение обмена ветхих банкнот и дефектных монет; не самостоятельный нормативный акт","title_contains":"ветхих банкнот"},
+    {"source_id":"NBK-news-17656","url":"https://nationalbank.kz/ru/news/informacionnye-soobshcheniya/17656","group":"currency_exchange","role":"guidance","scope":"Официальное разъяснение обмена наличной иностранной валюты, документов и причин отказа; сверять с действующей нормой","title_contains":"иностранной валюты"}
+  ]
+}

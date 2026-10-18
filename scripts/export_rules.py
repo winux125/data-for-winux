@@ -2,7 +2,7 @@
 import json
 from pathlib import Path
 root = Path(__file__).resolve().parents[1]
-cards = json.loads((root/'ForteBank-Legal-RAG-2026-10-18/legal_rag/data/rule_cards.json').read_text(encoding='utf-8'))
+cards = json.loads((root/'legal_rag/data/rule_cards.json').read_text(encoding='utf-8'))
 rows = [{'id': c['rule_id'], 'type': c['type_label_ru'], 'clauses': c['clause_ids'],
          'human_reviewed': c['review']['human_reviewed'],
          'production_active': c['review']['production_active'],

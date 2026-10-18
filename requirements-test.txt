@@ -1,0 +1,9 @@
+# CPU contract/source checks only; inference uses requirements.txt.
+numpy==2.2.6
+av==16.0.1
+fastapi==0.143.2
+httpx==0.28.1
+python-multipart==0.0.32
+Pillow>=12,<13
+pytest>=9,<10
+lm-format-enforcer==0.11.3

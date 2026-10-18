@@ -17,7 +17,7 @@ seen = set()
 summary = []
 for attempt in range(90):
     try:
-        urllib.request.urlopen('https://185.216.22.24.sslip.io/readyz', timeout=10).close()
+        urllib.request.urlopen('https://154.54.100.194.sslip.io/readyz', timeout=10).close()
         break
     except urllib.error.HTTPError:
         time.sleep(2)
@@ -30,7 +30,7 @@ for record in audit['records']:
     path = root / 'open/videos' / record['file']
     destination = output / (str(record['number']) + '.json')
     try:
-        result = run('https://185.216.22.24.sslip.io', key, path)
+        result = run('https://154.54.100.194.sslip.io', key, path)
         destination.write_text(json.dumps(result, ensure_ascii=False), encoding='utf-8')
         actual = result.get('verdict') == 'violation' if result['status'] == 'done' else None
         item = {'number': record['number'], 'expected_positive': record['positive'], 'predicted_positive': actual,

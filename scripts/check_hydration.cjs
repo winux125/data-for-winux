@@ -1,6 +1,9 @@
-const {chromium}=require('playwright');
+const {createRequire}=require('node:module');
+const {resolve}=require('node:path');
+const {chromium}=createRequire(resolve(process.env.FORTE_FRONTEND_DIR||resolve(__dirname,'../forte-vision'),'package.json'))('@playwright/test');
 const fs=require('fs');
 (async()=>{
+ fs.mkdirSync('data',{recursive:true});
  const browser=await chromium.launch({headless:true});
  for(const js of [false,true]){
   const c=await browser.newContext({javaScriptEnabled:js,reducedMotion:'reduce'});

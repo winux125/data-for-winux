@@ -1,4 +1,6 @@
-const {chromium} = require('playwright');
+const {createRequire}=require('node:module');
+const {resolve}=require('node:path');
+const {chromium}=createRequire(resolve(process.env.FORTE_FRONTEND_DIR||resolve(__dirname,'../forte-vision'),'package.json'))('@playwright/test');
 const fs = require('node:fs');
 (async () => {
   fs.mkdirSync('data', {recursive:true});

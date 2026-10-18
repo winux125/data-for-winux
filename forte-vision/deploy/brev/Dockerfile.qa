@@ -1,6 +1,0 @@
-FROM forte-vision:deployment
-USER root
-COPY . .
-ENV PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
-RUN corepack enable && corepack prepare pnpm@11.25.0 --activate && pnpm exec playwright install --with-deps chromium webkit && apt-get install -y ca-certificates
-CMD ["sh", "-c", "pnpm exec vinext typegen && pnpm typecheck && pnpm test && pnpm lint && pnpm test:e2e --workers=4 --reporter=line"]

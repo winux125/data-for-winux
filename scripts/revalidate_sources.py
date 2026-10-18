@@ -6,7 +6,7 @@ from pathlib import Path
 from urllib.request import Request, urlopen
 
 root = Path(__file__).resolve().parents[1]
-core = root / 'ForteBank-Legal-RAG-2026-10-18/legal_rag/resources/core'
+core = root / 'legal_rag/resources/core'
 sources = json.loads((core/'sources.json').read_text(encoding='utf-8'))['sources']
 
 def check(source):
@@ -21,5 +21,6 @@ def check(source):
 
 with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
     result = list(executor.map(check, sources))
+(root/'data').mkdir(exist_ok=True)
 (root/'data/source_revalidation.json').write_text(json.dumps(result,indent=2),encoding='utf-8')
 print(json.dumps(result))

@@ -4,6 +4,6 @@
 *.webp binary
 *.woff2 binary
 *.mov binary
-# Preserve supplied model-package sources byte-for-byte.
-JEPA-FULL/** -text
-ForteBank-Legal-RAG-2026-10-18/** -text
+# Preserve pinned model sources and verified RAG resources byte-for-byte.
+model_packages/jepa_lgbm/** -text
+legal_rag/** -text

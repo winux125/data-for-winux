@@ -1,9 +1,7 @@
 """Transport around the supplied JEPA and RAG public APIs; no decision overrides."""
-import hashlib
 import dataclasses
 import json
 import logging
-import sys
 import time
 
 from .settings import ROOT
@@ -13,10 +11,8 @@ from .legal import assess, publishable_assessments, publishable_review_findings
 from .detector import load_detector
 from .contracts import append_citation
 from .events import select_observations, action_type
+from .build import build_id
 
-sys.path.insert(0, str(ROOT / 'ForteBank-Legal-RAG-2026-10-18'))
-if (ROOT / 'releases/legal-rag-mvp-v1/legal_rag').is_dir():
-    sys.path.insert(0, str(ROOT / 'releases/legal-rag-mvp-v1'))
 log = logging.getLogger(__name__)
 
 
@@ -106,19 +102,11 @@ class Pipeline:
         from legal_rag.embed import BgeM3Embedder, build_index
         if not torch.cuda.is_available():
             raise RuntimeError('CUDA GPU required for the five minute service')
-        digest = hashlib.sha256()
-        for file in sorted((ROOT / 'backend').glob('*.py')):
-            digest.update(file.name.encode())
-            digest.update(file.read_bytes())
-        detector_settings = json.loads((ROOT / 'config/detector.json').read_text(encoding='utf-8'))
-        for file in [ROOT / 'config/detector.json', ROOT / detector_settings['package_dir'] / 'model.json']:
-            digest.update(file.relative_to(ROOT).as_posix().encode())
-            digest.update(file.read_bytes())
-        self.build_id = digest.hexdigest()[:16]
+        self.build_id = build_id(ROOT)
         torch.set_num_threads(8)
         self.jepa = load_detector()
         self.detector_version = self.jepa.spec['model_id']
-        # Versioned, explicit policy; original incoming package remains archived intact.
+        # One canonical, version-controlled RAG package and explicit service policy.
         config = load_config(ROOT / 'config/rag-mvp.json')
         # Resolve the SAME pinned revisions to disk. Transformers 4.57 otherwise
         # tries a model-info request from AutoTokenizer despite local_files_only.
@@ -145,7 +133,7 @@ class Pipeline:
         if policy.get('mode') != 'possible_indications':
             raise ValueError('Unknown service analysis policy')
         self.review_mode = True
-        log.info('Models ready; JEPA public interface; RAG evidence-assisted release v1')
+        log.info('Models ready; JEPA public interface; canonical Legal RAG package')
 
     def analyze(self, path, stage):
         started = time.monotonic()
@@ -248,7 +236,7 @@ class Pipeline:
                 'limitations': ['Результат требует проверки человеком.',
                     'Разреженная выборка кадров может пропускать короткие действия.'],
                 'model_versions': {'detector': self.detector_version, 'observer': 'Qwen3-VL-8B-Instruct',
-                    'legal': 'legal-rag-mvp-v1: Qwen3-VL-4B + BGE-M3/BM25; evidence_assisted'}}
+                    'legal': 'legal_rag: Qwen3-VL-4B + BGE-M3/BM25; evidence_assisted'}}
 
     def review_result(self, path, candidates, binary, duration, started, stage):
         """Render review indications from the dedicated RAG contract, not a formal override."""
@@ -305,4 +293,4 @@ class Pipeline:
                 'Ссылка с source_relation=context_only даёт контекст и не устанавливает нарушенный пункт.',
                 'Разреженная выборка кадров может пропускать короткие действия.'],
             'model_versions': {'detector': self.detector_version, 'observer': 'Qwen3-VL-8B-Instruct',
-                    'legal': 'legal-rag-mvp-v1: Qwen3-VL-4B + BGE-M3/BM25; qwen_prompt-v3.2'}}
+                    'legal': 'legal_rag: Qwen3-VL-4B + BGE-M3/BM25; qwen_prompt-v3.2'}}

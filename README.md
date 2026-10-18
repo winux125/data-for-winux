@@ -1,117 +1,109 @@
 # Forte Vision
 
-Локальный AI-сервис для проверки видеозаписей кассовых операций. **Datathon 26 · кейс ForteBank.**
+Сервис проверки видеозаписей кассовых операций · Datathon 26, ForteBank.
 
-[Открыть сервис](https://forte26.vercel.app/app) · [API](https://154.54.100.194.sslip.io/docs) · [Handoff разработчику](docs/HANDOFF.md) · [Аудит](docs/AUDIT.md)
+[Сайт](https://forte26.vercel.app/app) · [API](https://154.54.100.194.sslip.io/docs) · [Развёртывание](docs/DEPLOYMENT.md) · [RAG и Qwen](docs/LEGAL_RAG_QWEN_README.md)
 
-> **Статус передачи 18.10.2026:** активен режим `possible_indications`: JEPA выбирает риск, Qwen описывает видимые действия, RAG даёт объяснение и источник для проверки человеком. Неизвестные правовые условия остаются в результате. Источники выбираются также за пределами карточек; интерфейс показывает полный пункт и связанные положения. Это не окончательное юридическое заключение; ссылка уровня документа может быть только контекстом. Проверки и ограничения — в [описании MVP](docs/RAG_MVP_POLICY.md). Предыдущие handoff/audit описывают старое состояние.
+## Рабочая схема
 
-## Что внутри
-
-Подробная схема моделей, нормативного поиска, генерации и проверок — [README по Legal RAG и Qwen](docs/LEGAL_RAG_QWEN_README.md).
-
-Обновление 18.10.2026: на GPU развёрнута [v3.2 — исправления Qwen без замены моделей](docs/QWEN_PROMPTS_V3_2_2026-10-18.md), build `224cff2bf11c056d`. Камера ограничена наблюдаемыми фактами; объяснение сфокусировано на выбранном требовании, ссылки проверяются по реальному нормативному пакету. Сохранены полные цитаты, источник в description и контракт API из [v3.1](docs/SOURCE_CONTRACTS_V3_1_2026-10-18.md). Экспериментальный второй фильтр риска не включён.
-
-| Компонент | Стек и назначение |
-|---|---|
-| Интерфейс | React 19, Vinext, TypeScript, Tailwind; RU / KK / EN |
-| API | FastAPI, асинхронные задания, авторизация по X-API-Key |
-| Очередь | SQLite WAL, отдельный resident GPU worker |
-| Детектор | JEPA-LGBM-FULL: frozen JEPA + две головы LightGBM без PCA, примерный таймкод |
-| Наблюдения | Локальный Qwen3-VL-8B: видимые факты и ссылки на кадры |
-| Нормативная проверка | Legal RAG с версионированным MVP-патчем: BGE-M3 + BM25, Qwen3-VL-4B |
-| Развёртывание | NVIDIA Brev A100 80 GB, systemd, Docker, Caddy HTTPS |
-| Короткий адрес | Vercel rewrite; видео загружается напрямую на GPU-сервер |
-
-```mermaid
-flowchart LR
-    UI[forte-vision] --> API[FastAPI]
-    API --> Q[SQLite queue]
-    Q --> J[JEPA + LightGBM]
-    J -->|negative| N[no_violation]
-    J -->|positive| V[Local visual observer]
-    V --> R[Legal RAG MVP]
-    R --> G[Possible indications with source context]
-    G --> API
+```text
+MOV → JEPA + LightGBM
+    ├─ отрицательный класс → no_violation, без Qwen/RAG
+    └─ положительный класс → исходные кадры → Qwen3-VL-8B → структурированные факты
+       → BM25 + BGE-M3 / RRF → полный нормативный контекст → Qwen3-VL-4B
+       → violations: действие, таймкод, JPEG, объяснение и источник
 ```
 
-Модели исполняются внутри сервиса. Worker работает с отключённой сетью; после загрузки весов обработка не требует доступа к интернету. Аудио и идентификация лиц не используются. Результат предназначен для проверки человеком.
+Все модели исполняются на сервере. GPU worker работает без сети. Аудио и идентификация лиц не используются. Поиск и генерация реализованы в одном пакете `legal_rag/`, без накладываемых при запуске патчей и без зависимости от исходного ZIP RAG. Qdrant и reranker не используются.
 
-## Использование
+Режим MVP — `possible_indications`: результат показывает визуальные признаки с нормативным контекстом для проверки человеком. Неизвестные условия сохраняются, карточки не получают фиктивной человеческой подписи. Подробности — [политика MVP](docs/RAG_MVP_POLICY.md).
 
-1. Открыть [рабочее пространство](https://forte26.vercel.app/app).
-2. Выбрать MOV и нажать «Начать проверку». Сервер подключается автоматически.
-3. Дождаться обработки и проверить таймкоды, кадры, объяснение и нормативный источник.
+## Структура
 
-Ручного ввода адреса и ключа на фронте нет. Браузер получает временную сессию с доступом только к собственным заданиям; ключ жюри остаётся на сервере. Демонстрационные записи явно отмечены.
+```text
+backend/                      API, очередь, видео, Qwen observer и связка моделей
+legal_rag/                    единственная рабочая реализация RAG
+  data/                       карточки, словарь и конфигурация; входят в Git
+  resources/                  54 нормативных снимка, метаданные и tokenizer
+  tests/                      проверки RAG
+model_packages/jepa_lgbm/      неизменённый пакет активного детектора
+  weights/                    веса из ZIP владельца; вне Git
+forte-vision/                 интерфейс RU / KK / EN, темы, локальные ассеты
+config/                       конфигурации сервиса и моделей
+deploy/                       Dockerfile и шаблоны systemd/Caddy
+scripts/                      установка, preflight, тестовый клиент, упаковка
+tests/                        backend и установка из чистого дерева
+docs/                         инструкции и датированные отчёты
+models/                       Qwen/BGE и cache; вне Git
+data/                         задания, индекс, результаты; вне Git
+secrets/                      ключ и переменные окружения; вне Git
+```
 
-**Текущие лимиты:** файл до 10 ГиБ, видео до 180 секунд, разрешение до 4096×2160. Загрузка большого файла на практике ещё требует проверки. Задания сохраняются в очереди без прежнего ограничения в два запроса. Одна GPU не гарантирует соблюдение SLA при перегрузке: API жюри имеет дедлайн 285 секунд от приёма, браузерные задания — от начала обработки.
+Прежние SVM-пакет, исходный RAG и overlays удалены из рабочего дерева. Их история сохранена в Git, а перед переносом сделаны отдельные резервные копии. Runtime не использует старые каталоги и не откатывается на них автоматически.
+
+## Установка на GPU-сервер
+
+Нужны Linux с systemd, NVIDIA/CUDA, Docker, `uv`, доступ к публичным весам при установке и ZIP `JEPA-LGBM-FULL.zip` от владельца. Код, нормативная база и исходники детектора находятся в Git. Тяжёлые веса, ключи и конкурсные видео туда не входят.
+
+```bash
+git clone https://github.com/winux125/datathon-forte.git
+cd datathon-forte
+export JEPA_ARCHIVE=/absolute/path/JEPA-LGBM-FULL.zip
+bash scripts/bootstrap.sh
+export FORTE_PUBLIC_HOST=your-server.example
+export FORTE_SITE_ORIGIN=https://your-server.example
+bash scripts/install_services.sh
+```
+
+Bootstrap предназначен для новой установки. На существующем сервере не пересоздавайте `.venv` и не меняйте веса без необходимости. Порядок обновления, настройка cache и проверка готовности — [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
 
 ## API жюри
 
-Ключ передаётся в заголовке `X-API-Key`. Получить его у владельца проекта; в репозитории ключей нет.
-
 ```bash
-export FORTE_API_URL="https://154.54.100.194.sslip.io"
-# FORTE_API_KEY задаётся в окружении отдельно.
+export FORTE_API_URL=https://154.54.100.194.sslip.io
+# FORTE_API_KEY задаётся владельцем отдельно.
 curl -X POST "$FORTE_API_URL/api/v1/analyze" \
   -H "X-API-Key: $FORTE_API_KEY" -F "file=@video.mov"
-curl "$FORTE_API_URL/api/v1/jobs/<job_id>" \
-  -H "X-API-Key: $FORTE_API_KEY"
+curl "$FORTE_API_URL/api/v1/jobs/JOB_ID" -H "X-API-Key: $FORTE_API_KEY"
 ```
 
-POST возвращает `202` и `job_id`. GET возвращает `processing`, `done` или `failed`. Успешный результат:
+POST возвращает HTTP 202, `job_id`, `status=processing`. GET — `processing`, `done` или `failed`. При `done`: `verdict=violation|no_violation` и список `violations`. Каждое событие содержит `type`, `timecode_sec`, `description`, 1–3 исходных JPEG/base64 и полный нормативный источник в `rule`; ссылка также включена в обязательное описание. Ошибка обработки не подменяется чистым вердиктом.
 
-```json
-{
-  "job_id": "example",
-  "status": "done",
-  "verdict": "no_violation",
-  "violations": []
-}
-```
+Сайт подключается к API автоматически через ограниченную браузерную сессию. Ключ жюри не передаётся в код frontend. При размещении отдельно задайте `FORTE_SITE_ORIGIN`; Vercel rewrite находится в `deploy/vercel/`.
 
-При `violation` каждое событие содержит `type`, `timecode_sec`, `description`, 1–3 JPEG в `evidence_frames`, а также нормативный источник в `rule`. Ошибка анализа не подменяется чистым вердиктом. `/healthz` проверяет HTTP, `/readyz` — готовность моделей; это не подтверждение разрешения публикации RAG.
+Лимиты сервиса: до 10 ГиБ, до 180 секунд, до 4096×2160. Дедлайн API жюри — 285 секунд от приёма задания. Предельный размер и параллельная нагрузка отдельно не подтверждены. Одна GPU обслуживает задания последовательно.
 
-## Продолжить разработку
+## Проверки
 
-**Начать с [docs/HANDOFF.md](docs/HANDOFF.md).** Там описаны доступ к VM, активные сервисы, расположение моделей, команды деплоя, исходное состояние. Актуальные изменения pipeline и политика описаны в [RAG MVP](docs/RAG_MVP_POLICY.md).
-
-```text
-backend/                         API, очередь, worker, адаптеры
-forte-vision/                    пользовательский интерфейс
-model_packages/jepa_lgbm/         активный неизменённый пакет JEPA-LGBM-FULL
-model_packages/jepa_lgbm/weights/ локальные веса, исключены из Git
-JEPA-FULL/                       архив прежнего SVM-пакета; рабочий pipeline его не импортирует
-ForteBank-Legal-RAG-2026-10-18/   исходный нормативный RAG
-config/                          конфигурация внешнего observer и список правил
-deploy/                          systemd, Caddy, frontend build, Vercel rewrite
-scripts/                         установка, диагностика, проверки и упаковка
-tests/                           backend-контракты и проверки интеграции
-docs/                            handoff и аудит
-```
-
-Веса, исходные ZIP, видеодатасет, ключи и журналы не входят в Git. Для запуска нужны исходные артефакты от владельца и веса закреплённых моделей. `scripts/bootstrap.sh` и systemd units рассчитаны на текущую Linux VM; перед переносом проверить пути. Dockerfile фронта сейчас использует существующий production image и требует доработки для чистой сборки с нуля.
-
-Активный детектор выбирается через `config/detector.json`, загрузка через `backend/detector.py` и публичный `JepaModel.predict()`. Исходники нового пакета сохранены побайтно; SHA-256 проверяются перед загрузкой весов. Qwen и Legal RAG продолжают получать тот же контракт. Детали, установка весов и откат — [JEPA + LightGBM](docs/JEPA_LGBM_DEPLOYMENT.md).
-
-Для чистого клона установить зависимости из `requirements.txt`, затем добавить веса из переданного владельцем ZIP:
+Текущая развёрнутая сборка после переноса: **85aa3f138fadb7fb**. Проверены 210 Python, 108 frontend unit, 74 browser E2E, пять реальных внешних API-заданий и загрузка через публичный сайт. Сетевые повторы и ограничения — в [отчёте переноса](docs/REPOSITORY_LAYOUT_2026-10-18.md).
 
 ```bash
-.venv/bin/python scripts/install_detector.py --archive /path/to/JEPA-LGBM-FULL.zip
-.venv/bin/python scripts/install_detector.py
+.venv/bin/python scripts/verify_runtime.py
+.venv/bin/python scripts/verify_runtime.py --models --cuda
+.venv/bin/python -m pytest tests legal_rag/tests -q
+cd forte-vision
+corepack enable
+pnpm install --frozen-lockfile
+pnpm typecheck
+pnpm test
+pnpm lint
+pnpm build
+pnpm start
 ```
 
-ZIP и веса не добавляются в Git. `scripts/bootstrap.sh` также принимает путь через `JEPA_ARCHIVE`. Историческая проверка первоначальных JEPA-SVM/RAG ZIP — `scripts/verify_inputs.py`; она не выбирает активный детектор.
+Frontend — самостоятельный Node-сервер. Сборка не требует `.openai/hosting.json`, сессии Sites, Cloudflare или заранее собранного образа Forte. Команды frontend E2E — в [его README](forte-vision/README.md).
 
-## Проверки и открытые задачи
+До переноса структуры успешно проверены пять внешних API-запусков: [отчёт](docs/JURY_API_FIVE_RUNS_2026-10-18.md). Результаты повторной проверки новой структуры фиксируются в [отчёте переноса](docs/REPOSITORY_LAYOUT_2026-10-18.md). Прогоны на обучающих видео являются проверкой интеграции, а не независимыми F1/precision/recall.
 
-| Проверка | Последний результат |
-|---|---|
-| Backend с JEPA-LGBM на VM | 39 passed |
-| Frontend typecheck | Пройден |
-| Frontend unit | 108 passed в structural-sources-v3; при замене детектора UI не менялся |
-| Chromium / WebKit E2E | 74 passed в structural-sources-v3; при замене детектора UI не менялся |
-| Реальный API с JEPA-LGBM | Х-18: 3 события за 74.075 с; Х-45: no_violation за 10.467 с серверной обработки |
+Исходные [handoff](docs/HANDOFF.md) и [аудит](docs/AUDIT.md) — исторические документы. Для текущих путей и запуска используйте этот README и DEPLOYMENT.md.
 
-Текущие проверки источников и полного API — [structural-sources-v3](docs/STRUCTURAL_SOURCES_V3_2026-10-18.md). FULL-детектор обучен на всех 40 видео: smoke на них проверяет работоспособность, а не независимый F1. Для оценки качества нужны новые размеченные видео.
+Для локальной CPU-проверки в отдельной копии проекта достаточно Python 3.11+ и requirements-test.txt. Qwen и веса не загружаются. Например, Windows:
+
+```powershell
+python -m venv .venv
+.venv\Scripts\python.exe -m pip install -r requirements-test.txt
+.venv\Scripts\python.exe scripts/verify_runtime.py
+.venv\Scripts\python.exe -m pytest tests legal_rag/tests -q
+```
+
+Один Torch-зависимый тест в CPU-профиле пропускается. Этот профиль проверяет RAG и контракты, но не реальное восприятие Qwen.

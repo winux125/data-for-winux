@@ -137,24 +137,21 @@ config/detector.json                   активный детектор
 config/observer.json                   визуальная Qwen
 config/rag-mvp.json                    BGE, Qwen4B, retrieval и бюджеты
 config/analysis-policy.json            possible_indications
-ForteBank-Legal-RAG-2026-10-18/          исходный переданный пакет
-patches/legal-rag-mvp-v1/legal_rag/     исходники изменений RAG
-releases/legal-rag-mvp-v1/legal_rag/    собранная рабочая версия RAG
+legal_rag/                            единственная рабочая версия RAG
+legal_rag/data/                       карточки, lexicon и конфигурация
+legal_rag/resources/                  нормативные снимки и метаданные
 data/legal_index_stock/                локальный индекс и manifest
 models/ и HF cache                    локальные веса, вне Git
 ```
 
-Не редактировать только сгенерированный `releases/`: изменения должны сохраняться в `patches/`. `scripts/install_rag_mvp.py` предназначен для сборки release и защищён от несовпадения существующей сборки; его нельзя считать командой безусловного обновления production.
-
-Для переноса нужны код, зависимости `requirements.txt`, исходный нормативный пакет, веса закреплённых revisions, индекс либо его пересборка, конфигурация и переменные окружения. Чистый Git-клон не содержит тяжёлых весов, приватных видео или ключей.
+Изменения вносятся непосредственно в `legal_rag/`. Генерировать overlay и получать исходный RAG ZIP больше не требуется. Перенос содержит весь нормативный корпус; веса и ключи передаются отдельно. Инструкция: [DEPLOYMENT.md](DEPLOYMENT.md).
 
 ## 10. Как проверять
 
-Структурные тесты RAG из собранного release на Linux:
+Структурные тесты RAG из корня проекта на Linux:
 
 ```bash
-cd /home/shadeform/forte-service/releases/legal-rag-mvp-v1
-../../.venv/bin/python -m unittest discover -s legal_rag/tests -t .
+.venv/bin/python -m unittest discover -s legal_rag/tests -t .
 ```
 
 Backend-тесты из корня сервиса:
